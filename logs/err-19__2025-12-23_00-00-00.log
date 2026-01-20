@@ -1,0 +1,105 @@
+2025-12-22T04:55:48: Error: Failed to find Server Action "a6a3c996". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+    at ignore-listed frames
+2025-12-22T04:55:50: Error: Failed to find Server Action "af244e09". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+    at ignore-listed frames
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-22T09:17:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}

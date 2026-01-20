@@ -1,0 +1,295 @@
+{
+  "name": "UNSIC 1️⃣ Pre-Approvazione (AI Analyzer)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{"field": "cronExpression", "expression": "0 7 * * *"}]
+        }
+      },
+      "name": "Schedule 07:00 Daily",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 400],
+      "id": "schedule"
+    },
+    {
+      "parameters": {"url": "https://www.ansa.it/sito/notizie/economia/economia_rss.xml"},
+      "name": "RSS ANSA",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "id": "rss-ansa"
+    },
+    {
+      "parameters": {"url": "https://www.ilsole24ore.com/rss/economia.xml"},
+      "name": "RSS Sole24Ore",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [460, 400],
+      "id": "rss-sole"
+    },
+    {
+      "parameters": {"url": "https://www.governo.it/rss"},
+      "name": "RSS Governo",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [460, 500],
+      "id": "rss-gov"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll"
+      },
+      "name": "Merge Feeds",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [680, 400],
+      "id": "merge"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [{
+            "value1": "={{ $json.isoDate }}",
+            "operation": "after",
+            "value2": "={{ $now.minus({hours: 24}).toISO() }}"
+          }]
+        }
+      },
+      "name": "Filter Last 24h",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [900, 400],
+      "id": "filter-24h"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "title", "value": "={{ $json.title }}", "type": "string"},
+            {"id": "2", "name": "link", "value": "={{ $json.link }}", "type": "string"},
+            {"id": "3", "name": "description", "value": "={{ $json.contentSnippet || $json.content }}", "type": "string"},
+            {"id": "4", "name": "pubDate", "value": "={{ $json.isoDate }}", "type": "string"},
+            {"id": "5", "name": "source_feed", "value": "={{ $json.creator || 'RSS' }}", "type": "string"}
+          ]
+        }
+      },
+      "name": "Clean Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1120, 400],
+      "id": "clean"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "AI Agent News Analyzer",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [1340, 400],
+      "id": "agent-analyzer"
+    },
+    {
+      "parameters": {
+        "model": "gemini-3-flash-preview",
+        "options": {
+          "temperature": 0.3,
+          "maxOutputTokens": 1024
+        }
+      },
+      "name": "Gemini LLM",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [1340, 620],
+      "id": "gemini-llm",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "A1nGwfr8Myr9lwVe",
+          "name": "UNSIC Gemini API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchema": "{\"type\":\"object\",\"properties\":{\"score\":{\"type\":\"number\"},\"category\":{\"type\":\"string\"},\"pillar\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"summary\":{\"type\":\"string\"},\"why_relevant\":{\"type\":\"string\"},\"target_audience\":{\"type\":\"array\"},\"urgency\":{\"type\":\"string\"},\"call_to_action\":{\"type\":\"string\"},\"tags\":{\"type\":\"array\"},\"already_exists\":{\"type\":\"boolean\"}},\"required\":[\"score\",\"category\",\"summary\"]}"
+      },
+      "name": "Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [1560, 200],
+      "id": "parser"
+    },
+    {
+      "parameters": {
+        "name": "query_database",
+        "description": "Query UNSIC PostgreSQL database to check if news already exists, get statistics, or retrieve related news. Use SELECT queries."
+      },
+      "name": "Tool: Query DB",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [1140, 620],
+      "id": "tool-db"
+    },
+    {
+      "parameters": {
+        "name": "generate_image",
+        "description": "Generate professional images for news using Nano-Banana FLUX AI. Input: {prompt, width, height}. Use for high-score news (≥80) only.",
+        "method": "POST",
+        "url": "http://172.19.0.1:8100/api/generate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({prompt: $json.prompt, width: $json.width || 1200, height: $json.height || 630, model: 'flux-schnell'}) }}"
+      },
+      "name": "Tool: Generate Image",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [1140, 800],
+      "id": "tool-img"
+    },
+    {
+      "parameters": {
+        "sessionKey": "={{ $json.session_id || 'news_analyzer' }}"
+      },
+      "name": "Postgres Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.2,
+      "position": [1540, 620],
+      "id": "memory",
+      "credentials": {
+        "postgres": {
+          "id": "unsic-postgres",
+          "name": "UNSIC PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [{
+            "value1": "={{ $json.score }}",
+            "operation": "largerEqual",
+            "value2": 70
+          }]
+        }
+      },
+      "name": "Filter Score ≥ 70",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [1780, 400],
+      "id": "filter-score"
+    },
+    {
+      "parameters": {},
+      "name": "Sort by Score",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [2000, 400],
+      "id": "sort"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "name": "Limit Top 10",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [2220, 400],
+      "id": "limit"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "rank",
+            "value": "={{ $itemIndex + 1 }}",
+            "type": "number"
+          }]
+        },
+        "includeOtherFields": true
+      },
+      "name": "Add Rank",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2440, 400],
+      "id": "rank"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unsic.fodivps1.cloud/api/news",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  category: $json.category,\n  pillar: $json.pillar,\n  rank: $json.rank,\n  title: $json.title,\n  summary: $json.summary,\n  why_relevant: $json.why_relevant,\n  source: $('Clean Data').item.json.source_feed,\n  link: $('Clean Data').item.json.link,\n  article_id: $('Clean Data').item.json.link,\n  status: 'pending_approval',\n  published_at: $('Clean Data').item.json.pubDate\n}) }}"
+      },
+      "name": "Save to DB (Pending)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2660, 400],
+      "id": "save-db"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll"
+      },
+      "name": "Collect All",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [2880, 400],
+      "id": "collect"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "total_saved",
+            "value": "={{ $items().length }}",
+            "type": "number"
+          }, {
+            "id": "2",
+            "name": "dashboard_url",
+            "value": "https://unsic.fodivps1.cloud/dashboard/news",
+            "type": "string"
+          }]
+        }
+      },
+      "name": "Build Stats",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [3100, 400],
+      "id": "stats"
+    }
+  ],
+  "connections": {
+    "Schedule 07:00 Daily": {"main": [[
+      {"node": "RSS ANSA", "type": "main", "index": 0},
+      {"node": "RSS Sole24Ore", "type": "main", "index": 0},
+      {"node": "RSS Governo", "type": "main", "index": 0}
+    ]]},
+    "RSS ANSA": {"main": [[{"node": "Merge Feeds", "type": "main", "index": 0}]]},
+    "RSS Sole24Ore": {"main": [[{"node": "Merge Feeds", "type": "main", "index": 1}]]},
+    "RSS Governo": {"main": [[{"node": "Merge Feeds", "type": "main", "index": 2}]]},
+    "Merge Feeds": {"main": [[{"node": "Filter Last 24h", "type": "main", "index": 0}]]},
+    "Filter Last 24h": {"main": [[{"node": "Clean Data", "type": "main", "index": 0}]]},
+    "Clean Data": {"main": [[{"node": "AI Agent News Analyzer", "type": "main", "index": 0}]]},
+    "AI Agent News Analyzer": {"main": [[{"node": "Filter Score ≥ 70", "type": "main", "index": 0}]]},
+    "Filter Score ≥ 70": {"main": [[{"node": "Sort by Score", "type": "main", "index": 0}]]},
+    "Sort by Score": {"main": [[{"node": "Limit Top 10", "type": "main", "index": 0}]]},
+    "Limit Top 10": {"main": [[{"node": "Add Rank", "type": "main", "index": 0}]]},
+    "Add Rank": {"main": [[{"node": "Save to DB (Pending)", "type": "main", "index": 0}]]},
+    "Save to DB (Pending)": {"main": [[{"node": "Collect All", "type": "main", "index": 0}]]},
+    "Collect All": {"main": [[{"node": "Build Stats", "type": "main", "index": 0}]]},
+    "Gemini LLM": {"ai_languageModel": [[{"node": "AI Agent News Analyzer", "type": "ai_languageModel", "index": 0}]]},
+    "Output Parser": {"ai_outputParser": [[{"node": "AI Agent News Analyzer", "type": "ai_outputParser", "index": 0}]]},
+    "Tool: Query DB": {"ai_tool": [[{"node": "AI Agent News Analyzer", "type": "ai_tool", "index": 0}]]},
+    "Tool: Generate Image": {"ai_tool": [[{"node": "AI Agent News Analyzer", "type": "ai_tool", "index": 1}]]},
+    "Postgres Memory": {"ai_memory": [[{"node": "AI Agent News Analyzer", "type": "ai_memory", "index": 0}]]}
+  },
+  "settings": {},
+  "staticData": null
+}

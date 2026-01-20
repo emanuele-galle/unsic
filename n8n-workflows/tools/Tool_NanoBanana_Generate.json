@@ -1,0 +1,49 @@
+{
+  "name": "Tool: NanoBanana Image Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tool-nanobanana",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "tool-nanobanana"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://172.19.0.1:8100/api/generate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  prompt: $json.body.prompt || $json.prompt || 'UNSIC news graphic professional clean',\n  width: $json.body.width || 1200,\n  height: $json.body.height || 630,\n  model: 'flux-schnell',\n  num_inference_steps: 4\n}) }}",
+        "options": {}
+      },
+      "name": "Nano-Banana API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "name": "Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {"main": [[{"node": "Nano-Banana API", "type": "main", "index": 0}]]},
+    "Nano-Banana API": {"main": [[{"node": "Response", "type": "main", "index": 0}]]}
+  },
+  "settings": {},
+  "staticData": null
+}

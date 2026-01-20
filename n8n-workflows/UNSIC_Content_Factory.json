@@ -1,0 +1,468 @@
+{
+  "name": "UNSIC Content Factory",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "unsic-content-factory",
+        "options": {}
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 400],
+      "webhookId": "unsic-content-factory",
+      "id": "webhook-trigger-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "news_id",
+              "name": "news_id",
+              "type": "string",
+              "value": "={{ $json.body.news_id || $json.body.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract News ID",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [500, 400],
+      "id": "set-newsid-1"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ 'https://unsic.fodivps1.cloud/api/news/' + $json.news_id }}",
+        "authentication": "none",
+        "options": {}
+      },
+      "name": "Load News from DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [750, 400],
+      "id": "http-load-news-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "platforms",
+              "name": "platforms",
+              "type": "array",
+              "value": "={{ ['linkedin', 'facebook', 'instagram', 'twitter'] }}"
+            },
+            {
+              "id": "category",
+              "name": "category",
+              "type": "string",
+              "value": "={{ $json.category }}"
+            },
+            {
+              "id": "pillar",
+              "name": "pillar",
+              "type": "string",
+              "value": "={{ $json.pillar }}"
+            },
+            {
+              "id": "title",
+              "name": "title",
+              "type": "string",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "id": "summary",
+              "name": "summary",
+              "type": "string",
+              "value": "={{ $json.summary }}"
+            },
+            {
+              "id": "why_relevant",
+              "name": "why_relevant",
+              "type": "string",
+              "value": "={{ $json.why_relevant }}"
+            },
+            {
+              "id": "news_id",
+              "name": "news_id",
+              "type": "string",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract News Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1000, 400],
+      "id": "set-extract-2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "platform",
+              "name": "platform",
+              "type": "string",
+              "value": "={{ $json }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "name": "Split Platforms",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1250, 400],
+      "id": "set-split-platforms-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "content_prompt",
+              "name": "content_prompt",
+              "type": "string",
+              "value": "={{ `Categoria: ${$json.category}\nPilastro: ${$json.pillar}\nTitolo: ${$json.title}\nRiassunto: ${$json.summary}\nRilevanza: ${$json.why_relevant}\n\nPiattaforma: ${$json.platform}\n\nCrea un post ottimizzato per ${$json.platform} seguendo queste linee guida:\n\n**LinkedIn** (se platform=linkedin):\n- Tono professionale, corporate\n- Max 1300 caratteri\n- Focus su impatto business e normativo\n- Hashtag: max 5, rilevanti\n- CTA: chiedi opinioni, condivisione esperienze\n\n**Facebook** (se platform=facebook):\n- Tono accessibile, community-friendly\n- Max 800 caratteri\n- Storytelling, casi pratici\n- Hashtag: max 3\n- CTA: invita a commentare, condividere\n\n**Instagram** (se platform=instagram):\n- Tono visual storytelling, emozionale\n- Max 500 caratteri\n- Formattazione con emoji, line breaks\n- Hashtag: max 30 (mix popolare + niche)\n- CTA: tag amici, salva post\n\n**Twitter** (se platform=twitter):\n- Formato thread: 4 tweet\n- 280 caratteri per tweet\n- Tweet 1: hook + statistica\n- Tweet 2-3: dettagli chiave\n- Tweet 4: CTA + hashtag\n\nRispondi SOLO in formato JSON (niente markdown):\n{\n  \"text\": \"<contenuto del post>\",\n  \"hashtags\": [\"hashtag1\", \"hashtag2\", ...],\n  \"cta\": \"<call to action>\"\n}` }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Build Content Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1500, 400],
+      "id": "set-content-prompt-1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "={{ $env.GOOGLE_GEMINI_API_KEY }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  contents: [{\n    parts: [{\n      text: $json.content_prompt\n    }]\n  }],\n  generationConfig: {\n    temperature: 0.7,\n    topK: 40,\n    topP: 0.9,\n    maxOutputTokens: 2048,\n    responseMimeType: 'application/json'\n  }\n}) }}",
+        "options": {}
+      },
+      "name": "Generate Content (Gemini)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1750, 400],
+      "id": "http-gemini-content-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "generated_content",
+              "name": "generated_content",
+              "type": "object",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text) }}"
+            },
+            {
+              "id": "content_text",
+              "name": "content_text",
+              "type": "string",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).text }}"
+            },
+            {
+              "id": "hashtags",
+              "name": "hashtags",
+              "type": "array",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).hashtags }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Parse Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [2000, 400],
+      "id": "set-parse-content-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "canva_style",
+              "name": "canva_style",
+              "type": "object",
+              "value": "={{ {\n  'fisco': {colors: ['#1E3A8A','#3B82F6'], style: 'professional', icon: '💼'},\n  'lavoro': {colors: ['#059669','#10B981'], style: 'teamwork', icon: '🤝'},\n  'agricoltura': {colors: ['#15803D','#22C55E'], style: 'nature', icon: '🌾'},\n  'pnrr': {colors: ['#7C3AED','#A78BFA'], style: 'institutional', icon: '🏛️'},\n  'made_in_italy': {colors: ['#DC2626','#EF4444'], style: 'excellence', icon: '🇮🇹'},\n  'impresa': {colors: ['#EA580C','#FB923C'], style: 'innovation', icon: '🚀'}\n}[$('Extract News Data').item.json.category] || {colors: ['#64748B','#94A3B8'], style: 'generic', icon: '📰'} }}"
+            },
+            {
+              "id": "image_prompt",
+              "name": "image_prompt",
+              "type": "string",
+              "value": "={{ `Modern professional social media graphic, ${$json.canva_style.style} style, colors ${$json.canva_style.colors.join(' and ')}, icon ${$json.canva_style.icon}, UNSIC branding, clean typography, Italian business aesthetic, high quality` }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Build Image Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [2250, 400],
+      "id": "set-image-prompt-1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://172.19.0.1:8100/api/generate",
+        "authentication": "none",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  prompt: $json.image_prompt,\n  width: $('Split Platforms').item.json.platform === 'instagram' ? 1080 : ($('Split Platforms').item.json.platform === 'twitter' ? 1200 : 1200),\n  height: $('Split Platforms').item.json.platform === 'instagram' ? 1080 : ($('Split Platforms').item.json.platform === 'twitter' ? 675 : 630),\n  model: 'flux-schnell',\n  num_inference_steps: 4\n}) }}",
+        "options": {}
+      },
+      "name": "Generate Image (Nano-Banana)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2500, 400],
+      "id": "http-nanobanan-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "content_image_url",
+              "name": "content_image_url",
+              "type": "string",
+              "value": "={{ $json.image_url || '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract Image URL",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [2750, 400],
+      "id": "set-image-url-1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unsic.fodivps1.cloud/api/content",
+        "authentication": "none",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  news_id: $('Extract News Data').item.json.news_id,\n  platform: $('Split Platforms').item.json.platform,\n  content_text: $('Parse Content').item.json.content_text,\n  content_image_url: $json.content_image_url,\n  hashtags: $('Parse Content').item.json.hashtags,\n  status: 'ready',\n  scheduled_for: new Date(Date.now() + 3600000 * ($itemIndex + 1)).toISOString()\n}) }}",
+        "options": {}
+      },
+      "name": "Save Content to DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3000, 400],
+      "id": "http-save-content-1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "name": "Collect All Content",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [3250, 400],
+      "id": "merge-content-1"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({\n  success: true,\n  news_id: $('Extract News Data').first().json.news_id,\n  content_generated: $items().length,\n  platforms: $items().map(i => i.json.platform)\n}) }}",
+        "options": {}
+      },
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [3500, 400],
+      "id": "webhook-response-1"
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract News ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract News ID": {
+      "main": [
+        [
+          {
+            "node": "Load News from DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load News from DB": {
+      "main": [
+        [
+          {
+            "node": "Extract News Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract News Data": {
+      "main": [
+        [
+          {
+            "node": "Split Platforms",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Platforms": {
+      "main": [
+        [
+          {
+            "node": "Build Content Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Content Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Content (Gemini)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Content (Gemini)": {
+      "main": [
+        [
+          {
+            "node": "Parse Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Content": {
+      "main": [
+        [
+          {
+            "node": "Build Image Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Image Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Image (Nano-Banana)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image (Nano-Banana)": {
+      "main": [
+        [
+          {
+            "node": "Extract Image URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Image URL": {
+      "main": [
+        [
+          {
+            "node": "Save Content to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Content to DB": {
+      "main": [
+        [
+          {
+            "node": "Collect All Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect All Content": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-12-03T10:00:00.000Z",
+      "updatedAt": "2025-12-03T10:00:00.000Z",
+      "id": "unsic-content",
+      "name": "UNSIC Content"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-12-03T10:00:00.000Z",
+  "versionId": "1"
+}

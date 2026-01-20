@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: unsic-postgres
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5439:5432"
+    environment:
+      POSTGRES_USER: unsic_user
+      POSTGRES_PASSWORD: fqu0qhNOMdULpoHZETXAvALzhiQ2aAcI
+      POSTGRES_DB: unsic_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - traefik-public
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unsic_user -d unsic_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  postgres-data:
+
+networks:
+  traefik-public:
+    external: true

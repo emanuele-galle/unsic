@@ -1,0 +1,176 @@
+{
+  "name": "UNSIC Content Generator (AI Agent)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-content",
+        "options": {}
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "unsic-generate-content"
+    },
+    {
+      "parameters": {
+        "url": "=https://unsic.fodivps1.cloud/api/news/{{ $json.body.news_id }}",
+        "options": {}
+      },
+      "name": "Load News from DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "platforms", "value": "=['linkedin', 'facebook', 'instagram', 'twitter']", "type": "array"}
+          ]
+        },
+        "includeOtherFields": true
+      },
+      "name": "Add Platforms List",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "fieldName": "platforms"
+      },
+      "name": "Loop Platforms",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "current_platform", "value": "={{ $json.platforms }}", "type": "string"}
+          ]
+        },
+        "includeOtherFields": true
+      },
+      "name": "Set Platform",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "AI Agent Content Creator",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "model": "gemini-3-flash-preview",
+        "options": {
+          "temperature": 0.7,
+          "maxOutputTokens": 2048
+        }
+      },
+      "name": "Google Gemini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [1340, 480],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "A1nGwfr8Myr9lwVe",
+          "name": "UNSIC Gemini API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Sei il Content Creator di UNSIC. Genera un post per {{ $json.current_platform }}.\n\nNotizia:\n- Categoria: {{ $json.category }}\n- Titolo: {{ $json.title }}\n- Summary: {{ $json.summary }}\n- Rilevanza: {{ $json.why_relevant }}\n\nLinee guida per {{ $json.current_platform }}:\n\nLINKEDIN: Professionale, corporate, max 1300 char, 5 hashtag, CTA domanda\nFACEBOOK: Accessibile, community, max 800 char, 3 hashtag, CTA condividi esperienza\nINSTAGRAM: Visual storytelling, max 500 char, 30 hashtag, emoji, CTA salva post\nTWITTER: Thread 4 tweet, 280 char/tweet, hashtag integrati\n\nOutput JSON:\n{\"text\": \"...\", \"hashtags\": [...], \"cta\": \"...\"}"
+      },
+      "name": "Content Prompt",
+      "type": "@n8n/n8n-nodes-langchain.promptTemplate",
+      "typeVersion": 1,
+      "position": [1340, 100]
+    },
+    {
+      "parameters": {
+        "jsonSchema": "{\"type\":\"object\",\"properties\":{\"text\":{\"type\":\"string\"},\"hashtags\":{\"type\":\"array\"},\"cta\":{\"type\":\"string\"}},\"required\":[\"text\",\"hashtags\"]}"
+      },
+      "name": "Parse Content JSON",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [1560, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://172.19.0.1:8100/api/generate",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "prompt", "value": "=UNSIC {{ $json.category }} news graphic, professional, clean, {{ $json.current_platform }} optimized"},
+            {"name": "width", "value": "={{ $json.current_platform === 'instagram' ? 1080 : 1200 }}"},
+            {"name": "height", "value": "={{ $json.current_platform === 'instagram' ? 1080 : 630 }}"},
+            {"name": "model", "value": "flux-schnell"}
+          ]
+        }
+      },
+      "name": "Generate Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1780, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unsic.fodivps1.cloud/api/content",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "news_id", "value": "={{ $json.id }}"},
+            {"name": "platform", "value": "={{ $json.current_platform }}"},
+            {"name": "content_text", "value": "={{ $json.text }}"},
+            {"name": "hashtags", "value": "={{ $json.hashtags }}"},
+            {"name": "content_image_url", "value": "={{ $json.image_url }}"},
+            {"name": "status", "value": "ready"}
+          ]
+        }
+      },
+      "name": "Save Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2000, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ {success: true, platform: $json.current_platform} }}"
+      },
+      "name": "Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [2220, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {"main": [[{"node": "Load News from DB", "type": "main", "index": 0}]]},
+    "Load News from DB": {"main": [[{"node": "Add Platforms List", "type": "main", "index": 0}]]},
+    "Add Platforms List": {"main": [[{"node": "Loop Platforms", "type": "main", "index": 0}]]},
+    "Loop Platforms": {"main": [[{"node": "Set Platform", "type": "main", "index": 0}]]},
+    "Set Platform": {"main": [[{"node": "AI Agent Content Creator", "type": "main", "index": 0}]]},
+    "AI Agent Content Creator": {"main": [[{"node": "Generate Image", "type": "main", "index": 0}]]},
+    "Generate Image": {"main": [[{"node": "Save Content", "type": "main", "index": 0}]]},
+    "Save Content": {"main": [[{"node": "Response", "type": "main", "index": 0}]]},
+    "Google Gemini": {"ai_languageModel": [[{"node": "AI Agent Content Creator", "type": "ai_languageModel", "index": 0}]]},
+    "Content Prompt": {"ai_prompt": [[{"node": "AI Agent Content Creator", "type": "ai_prompt", "index": 0}]]},
+    "Parse Content JSON": {"ai_outputParser": [[{"node": "AI Agent Content Creator", "type": "ai_outputParser", "index": 0}]]}
+  },
+  "settings": {},
+  "staticData": null
+}

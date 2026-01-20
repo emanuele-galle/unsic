@@ -1,0 +1,984 @@
+2025-12-04T16:27:36: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T16:34:04: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:15:34: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:51: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-04T23:54:52: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1958)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5632)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6670) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}

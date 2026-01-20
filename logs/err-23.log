@@ -1,0 +1,206 @@
+2025-12-11T01:53:21: 2025-12-11T01:53:21: 2025-12-11T01:53:21: 2025-12-11T01:53:21: 2025-12-11T01:53:21: 2025-12-11T01:53:21: 2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f .env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049741,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '521341378'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f .env.production && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049742,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1802924002'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f .env.development && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049780,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '3374176706'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f .env.staging && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049783,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '982798146'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f ../.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049784,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1544205474'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f ../.env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049785,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1243913858'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f ../.env.production && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049786,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '441446274'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /var/www/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049787,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '936752482'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /var/www/html/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049788,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '280047426'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /var/www/html/.env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049789,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '3655262082'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /app/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049790,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1344820002'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /app/.env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049791,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '170444482'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /app/.env.production && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049828,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '156530626'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /opt/app/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049837,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '3476936034'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /srv/app/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049851,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1119337442'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:21:  ⨯ Error: Command failed: test -f /root/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 3049853,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '874905666'
+}
+2025-12-11T01:53:21: 2025-12-11T01:53:22: 2025-12-11T01:53:22:  ⨯ SyntaxError: Unexpected token 'var'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '1796504595'
+}
+2025-12-11T01:53:22: 2025-12-11T01:53:22: 2025-12-11T01:53:22:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-11T01:53:22: 2025-12-11T01:53:22: 2025-12-11T01:53:22:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-11T01:53:22: 2025-12-11T01:53:22: 2025-12-11T01:53:22:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-11T01:53:22: 2025-12-11T01:53:22: 2025-12-11T01:53:22:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-11T01:53:22:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-11T01:53:22:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-11T01:53:22:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-11T01:53:22:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-11T01:53:22:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-11T01:53:22: 

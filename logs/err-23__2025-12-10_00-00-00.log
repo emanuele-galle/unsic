@@ -1,0 +1,276 @@
+2025-12-09T13:02:08: 2025-12-09T13:02:08:  ⨯ TypeError: Invalid character in header content ["x-action-redirect"]
+    at r.setHeader (.next/server/chunks/ssr/_a3b9117b._.js:1:76994)
+    at async m (.next/server/chunks/ssr/_25e6aab8._.js:1:6805)
+    at async p (.next/server/chunks/ssr/_25e6aab8._.js:2:2713) {
+  code: 'ERR_INVALID_CHAR'
+}
+2025-12-09T13:02:08:  ⨯ TypeError: Invalid character in header content ["x-action-redirect"]
+    at r.setHeader (.next/server/chunks/ssr/_a3b9117b._.js:1:76994)
+    at async m (.next/server/chunks/ssr/_25e6aab8._.js:1:6805)
+    at async p (.next/server/chunks/ssr/_25e6aab8._.js:2:2713) {
+  code: 'ERR_INVALID_CHAR'
+}
+2025-12-09T13:02:10: 2025-12-09T13:02:10:  ⨯ Error: NEXT_REDIRECT
+    at ignore-listed frames {
+  digest: '# Database\n' +
+    'DATABASE_URL="postgresql://unsic_user:fqu0qhNOMdULpoHZETXAvALzhiQ2aAcI@localhost:5439/unsic_db"\n' +
+    '\n' +
+    '# App\n' +
+    'NODE_ENV=production\n' +
+    'PORT=3025\n' +
+    'NEXT_PUBLIC_API_URL=https://unsic.fodivps1.cloud\n' +
+    '\n' +
+    '# N8N Integration\n' +
+    'N8N_WEBHOOK_URL=https://n8n.fodivps1.cloud/webhook/unsic-approve\n' +
+    'N8N_WEBHOOK_SCRAPER=https://n8n.fodivps1.cloud/webhook/unsic-scraper\n' +
+    'N8N_WEBHOOK_PUBLISHER=https://n8n.fodivps1.cloud/webhook/unsic-publish\n' +
+    'N8N_WEBHOOK_ERRORS=https://n8n.fodivps1.cloud/webhook/unsic-errors\n' +
+    '\n' +
+    '# Nano-Banana AI Image Generation\n' +
+    'NANOBANANA_URL=http://172.19.0.1:8100\n' +
+    '\n' +
+    '# Gemini AI (source from /home/shared/secrets/api-keys.env)\n' +
+    '# Run: source /home/shared/secrets/api-keys.env\n' +
+    'GEMINI_API_KEY=${GOOGLE_GEMINI_API_KEY}\n' +
+    '\n' +
+    '# LinkedIn API (TODO: Configure dopo registrazione app LinkedIn Developer)\n' +
+    '# https://www.linkedin.com/developers/apps\n' +
+    'LINKEDIN_CLIENT_ID=\n' +
+    'LINKEDIN_CLIENT_SECRET=\n' +
+    'LINKEDIN_ACCESS_TOKEN=\n' +
+    'LINKEDIN_ORGANIZATION_URN=\n' +
+    '\n' +
+    '# Twitter API v2 (TODO: Configure dopo registrazione app Twitter Developer)\n' +
+    '# https://developer.twitter.com/en/portal/dashboard\n' +
+    'TWITTER_API_KEY=\n' +
+    'TWITTER_API_SECRET=\n' +
+    'TWITTER_ACCESS_TOKEN=\n' +
+    'TWITTER_ACCESS_SECRET=\n' +
+    'TWITTER_BEARER_TOKEN=\n' +
+    '\n' +
+    '# Instagram Graph API (TODO: Configure dopo setup Facebook App)\n' +
+    '# https://developers.facebook.com/apps\n' +
+    'INSTAGRAM_USER_ID=\n' +
+    'INSTAGRAM_ACCESS_TOKEN=\n' +
+    'FACEBOOK_PAGE_ID=\n' +
+    '\n' +
+    '# SMTP (già configurato sistema Hostinger)\n' +
+    'SMTP_HOST=smtp.hostinger.com\n' +
+    'SMTP_PORT=465\n' +
+    'SMTP_USER=noreply@fodisrl.it\n' +
+    'SMTP_PASSWORD=Achille347!\n' +
+    'SMTP_FROM="UNSIC News <noreply@fodisrl.it>"\n' +
+    'SMTP_ADMIN_EMAIL=emanuelegalle@gmail.com\n' +
+    '\n' +
+    '# API Keys (source from shared secrets if needed)\n' +
+    '# Add other API keys as needed'
+}
+2025-12-09T17:04:55: 2025-12-09T17:04:55: 2025-12-09T17:04:55: 2025-12-09T17:04:56: 2025-12-09T17:04:56: 2025-12-09T17:04:56: 2025-12-09T17:04:56: 2025-12-09T17:04:56:  ⨯ Error: Command failed: test -f .env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108356,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '521341378'
+}
+2025-12-09T17:04:56: 2025-12-09T17:04:56:  ⨯ Error: Command failed: test -f .env.production && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108357,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1802924002'
+}
+2025-12-09T17:04:56: 2025-12-09T17:04:56:  ⨯ Error: Command failed: test -f .env.development && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108358,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '3374176706'
+}
+2025-12-09T17:04:56: 2025-12-09T17:04:56:  ⨯ Error: Command failed: test -f .env.staging && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108371,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '982798146'
+}
+2025-12-09T17:04:56: 2025-12-09T17:04:56:  ⨯ Error: Command failed: test -f ../.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108380,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1544205474'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f ../.env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108411,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1243913858'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f ../.env.production && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108431,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '441446274'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f /var/www/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108457,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '936752482'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f /var/www/html/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108472,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '280047426'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f /var/www/html/.env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108473,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '3655262082'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f /app/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108474,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1344820002'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f /app/.env.local && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108475,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '170444482'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f /app/.env.production && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108477,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '156530626'
+}
+2025-12-09T17:04:57: 2025-12-09T17:04:57:  ⨯ Error: Command failed: test -f /opt/app/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108478,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '3476936034'
+}
+2025-12-09T17:04:58: 2025-12-09T17:04:58:  ⨯ Error: Command failed: test -f /srv/app/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108479,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '1119337442'
+}
+2025-12-09T17:04:58: 2025-12-09T17:04:58:  ⨯ Error: Command failed: test -f /root/.env && echo EXISTS | base64 -w 0
+    at ignore-listed frames {
+  status: 1,
+  signal: null,
+  output: [Array],
+  pid: 1108480,
+  stdout: <Buffer >,
+  stderr: <Buffer >,
+  digest: '874905666'
+}
+2025-12-09T17:04:58: 2025-12-09T17:04:58: 2025-12-09T17:04:58:  ⨯ SyntaxError: Unexpected token 'var'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '1796504595'
+}
+2025-12-09T17:04:58: 2025-12-09T17:04:58: 2025-12-09T17:04:58:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-09T17:04:58: 2025-12-09T17:04:59: 2025-12-09T17:04:59:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-09T17:04:59: 2025-12-09T17:04:59: 2025-12-09T17:04:59:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-09T17:04:59: 2025-12-09T17:04:59: 2025-12-09T17:04:59:  ⨯ SyntaxError: Unexpected token '.'
+    at Object.Function [as get] (<anonymous>) {
+  digest: '3823581555'
+}
+2025-12-09T17:05:00:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-09T17:05:00:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-09T17:05:00:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-09T17:05:00:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-09T17:05:00:  ⨯ TypeError: The "command" argument must be of type string. Received type number (NaN)
+    at ignore-listed frames {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '360627154'
+}
+2025-12-09T17:05:00: 2025-12-09T23:30:51:  ⨯ TypeError: Cannot read properties of undefined (reading 'aa')
+    at ignore-listed frames {
+  digest: '2337460095'
+}

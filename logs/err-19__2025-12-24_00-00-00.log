@@ -1,0 +1,14 @@
+2025-12-23T08:33:24: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5668) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.1.0'
+}
+2025-12-23T22:45:52: Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+    at ignore-listed frames

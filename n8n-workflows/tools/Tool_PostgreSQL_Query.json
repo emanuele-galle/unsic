@@ -1,0 +1,52 @@
+{
+  "name": "Tool: PostgreSQL Query UNSIC",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tool-db-query",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "tool-db-query"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ $json.body.query || 'SELECT COUNT(*) FROM unsic_news' }}",
+        "options": {}
+      },
+      "name": "PostgreSQL",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [460, 300],
+      "credentials": {
+        "postgres": {
+          "id": "unsic-postgres",
+          "name": "UNSIC PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "name": "Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {"main": [[{"node": "PostgreSQL", "type": "main", "index": 0}]]},
+    "PostgreSQL": {"main": [[{"node": "Response", "type": "main", "index": 0}]]}
+  },
+  "settings": {},
+  "staticData": null
+}

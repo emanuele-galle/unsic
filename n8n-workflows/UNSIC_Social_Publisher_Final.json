@@ -1,0 +1,106 @@
+{
+  "name": "UNSIC Social Publisher",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{"field": "hours", "hoursInterval": 1}]
+        }
+      },
+      "name": "Every Hour",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://unsic.fodivps1.cloud/api/content?status=ready",
+        "options": {}
+      },
+      "name": "Get Ready Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {"value1": "={{ $json.length }}", "operation": "larger", "value2": 0}
+          ]
+        }
+      },
+      "name": "Has Content?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "content_id", "value": "={{ $json.id }}", "type": "number"},
+            {"id": "2", "name": "platform", "value": "={{ $json.platform }}", "type": "string"},
+            {"id": "3", "name": "text", "value": "={{ $json.content_text }}", "type": "string"},
+            {"id": "4", "name": "image", "value": "={{ $json.content_image_url }}", "type": "string"}
+          ]
+        }
+      },
+      "name": "Extract Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://unsic.fodivps1.cloud/api/content/{{ $json.content_id }}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "status", "value": "published"},
+            {"name": "platform_post_id", "value": "=mock_{{ $json.platform }}_{{ $now.toUnixInteger() }}"},
+            {"name": "published_at", "value": "={{ $now.toISO() }}"}
+          ]
+        }
+      },
+      "name": "Update Status Published",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll"
+      },
+      "name": "Collect Results",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "total_published", "value": "={{ $items().length }}", "type": "number"}
+          ]
+        }
+      },
+      "name": "Count Published",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1560, 300]
+    }
+  ],
+  "connections": {
+    "Every Hour": {"main": [[{"node": "Get Ready Content", "type": "main", "index": 0}]]},
+    "Get Ready Content": {"main": [[{"node": "Has Content?", "type": "main", "index": 0}]]},
+    "Has Content?": {"main": [[{"node": "Extract Content", "type": "main", "index": 0}], []]},
+    "Extract Content": {"main": [[{"node": "Update Status Published", "type": "main", "index": 0}]]},
+    "Update Status Published": {"main": [[{"node": "Collect Results", "type": "main", "index": 0}]]},
+    "Collect Results": {"main": [[{"node": "Count Published", "type": "main", "index": 0}]]}
+  },
+  "settings": {},
+  "staticData": null
+}

@@ -1,0 +1,397 @@
+{
+  "name": "UNSIC 2️⃣ Post-Approvazione (Complete)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "news-approved",
+        "responseMode": "responseNode"
+      },
+      "name": "Webhook: News Approved",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 500],
+      "webhookId": "news-approved",
+      "id": "webhook"
+    },
+    {
+      "parameters": {
+        "url": "=https://unsic.fodivps1.cloud/api/news/{{ $json.body.news_id }}"
+      },
+      "name": "Load News",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 500],
+      "id": "load"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{
+            "value1": "={{ $json.status }}",
+            "operation": "equals",
+            "value2": "approved"
+          }]
+        }
+      },
+      "name": "Verify Approved",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [680, 500],
+      "id": "verify"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "platforms",
+            "value": "=['linkedin', 'facebook', 'instagram', 'twitter']",
+            "type": "array"
+          }]
+        },
+        "includeOtherFields": true
+      },
+      "name": "Add Platforms",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [900, 500],
+      "id": "platforms"
+    },
+    {
+      "parameters": {
+        "fieldName": "platforms"
+      },
+      "name": "Split Platforms",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [1120, 500],
+      "id": "split"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "current_platform",
+            "value": "={{ $json.platforms }}",
+            "type": "string"
+          }]
+        },
+        "includeOtherFields": true
+      },
+      "name": "Set Platform",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1340, 500],
+      "id": "set-plat"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "AI Agent Content Creator",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [1560, 500],
+      "id": "agent"
+    },
+    {
+      "parameters": {
+        "model": "gemini-3-flash-preview",
+        "options": {
+          "temperature": 0.7,
+          "maxOutputTokens": 2048
+        }
+      },
+      "name": "Gemini LLM",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [1560, 720],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "A1nGwfr8Myr9lwVe",
+          "name": "UNSIC Gemini API"
+        }
+      },
+      "id": "gemini"
+    },
+    {
+      "parameters": {
+        "jsonSchema": "{\"type\":\"object\",\"properties\":{\"text\":{\"type\":\"string\"},\"hashtags\":{\"type\":\"array\"},\"cta\":{\"type\":\"string\"}},\"required\":[\"text\",\"hashtags\"]}"
+      },
+      "name": "Parse Content",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [1780, 280],
+      "id": "parser"
+    },
+    {
+      "parameters": {
+        "name": "generate_image",
+        "description": "Generate professional category-specific images using Nano-Banana FLUX AI",
+        "method": "POST",
+        "url": "http://172.19.0.1:8100/api/generate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({prompt: $json.prompt, width: $json.width || 1200, height: $json.height || 630, model: 'flux-schnell'}) }}"
+      },
+      "name": "Tool: Image",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [1360, 720],
+      "id": "tool-img"
+    },
+    {
+      "parameters": {
+        "name": "query_database",
+        "description": "Query UNSIC database for context"
+      },
+      "name": "Tool: DB",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [1360, 900],
+      "id": "tool-db"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unsic.fodivps1.cloud/api/content",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  news_id: $('Set Platform').item.json.id,\n  platform: $('Set Platform').item.json.current_platform,\n  content_text: $json.text,\n  hashtags: $json.hashtags,\n  content_image_url: $json.image_url || '',\n  category: $('Set Platform').item.json.category,\n  status: 'ready'\n}) }}"
+      },
+      "name": "Save Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1780, 500],
+      "id": "save"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{
+            "value1": "={{ $('Set Platform').item.json.current_platform }}",
+            "operation": "equals",
+            "value2": "linkedin"
+          }]
+        }
+      },
+      "name": "IF LinkedIn",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2000, 300],
+      "id": "if-li"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{
+            "value1": "={{ $('Set Platform').item.json.current_platform }}",
+            "operation": "equals",
+            "value2": "facebook"
+          }]
+        }
+      },
+      "name": "IF Facebook",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2000, 500],
+      "id": "if-fb"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{
+            "value1": "={{ $('Set Platform').item.json.current_platform }}",
+            "operation": "equals",
+            "value2": "instagram"
+          }]
+        }
+      },
+      "name": "IF Instagram",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2000, 700],
+      "id": "if-ig"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{
+            "value1": "={{ $('Set Platform').item.json.current_platform }}",
+            "operation": "equals",
+            "value2": "twitter"
+          }]
+        }
+      },
+      "name": "IF Twitter",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2000, 900],
+      "id": "if-tw"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "platform_post_id", "value": "=mock_linkedin_{{ $now.toUnixInteger() }}", "type": "string"},
+            {"id": "2", "name": "publish_status", "value": "published", "type": "string"},
+            {"id": "3", "name": "published_at", "value": "={{ $now.toISO() }}", "type": "string"},
+            {"id": "4", "name": "api_response", "value": "={success: true, message: 'LinkedIn API coming soon'}", "type": "object"}
+          ]
+        }
+      },
+      "name": "Publish LinkedIn (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2220, 200],
+      "id": "pub-li"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "platform_post_id", "value": "=mock_facebook_{{ $now.toUnixInteger() }}", "type": "string"},
+            {"id": "2", "name": "publish_status", "value": "published", "type": "string"},
+            {"id": "3", "name": "published_at", "value": "={{ $now.toISO() }}", "type": "string"}
+          ]
+        }
+      },
+      "name": "Publish Facebook (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2220, 400],
+      "id": "pub-fb"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "platform_post_id", "value": "=mock_instagram_{{ $now.toUnixInteger() }}", "type": "string"},
+            {"id": "2", "name": "publish_status", "value": "published", "type": "string"},
+            {"id": "3", "name": "published_at", "value": "={{ $now.toISO() }}", "type": "string"}
+          ]
+        }
+      },
+      "name": "Publish Instagram (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2220, 600],
+      "id": "pub-ig"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "1", "name": "platform_post_id", "value": "=mock_twitter_{{ $now.toUnixInteger() }}", "type": "string"},
+            {"id": "2", "name": "publish_status", "value": "published", "type": "string"},
+            {"id": "3", "name": "published_at", "value": "={{ $now.toISO() }}", "type": "string"}
+          ]
+        }
+      },
+      "name": "Publish Twitter (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2220, 800],
+      "id": "pub-tw"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll"
+      },
+      "name": "Merge Publishes",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [2440, 500],
+      "id": "merge-pub"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://unsic.fodivps1.cloud/api/content/{{ $('Save Content').item.json.id }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  status: 'published',\n  platform_post_id: $json.platform_post_id,\n  published_at: $json.published_at\n}) }}"
+      },
+      "name": "Update Published",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2660, 500],
+      "id": "update-pub"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll"
+      },
+      "name": "Collect Results",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [2880, 500],
+      "id": "collect"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "total_published",
+            "value": "={{ $items().length }}",
+            "type": "number"
+          }]
+        }
+      },
+      "name": "Stats",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [3100, 500],
+      "id": "stats"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({success: true, news_id: $('Load News').item.json.id, content_created: 4, content_published: $json.total_published}) }}"
+      },
+      "name": "Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [3320, 500],
+      "id": "response"
+    }
+  ],
+  "connections": {
+    "Webhook: News Approved": {"main": [[{"node": "Load News", "type": "main", "index": 0}]]},
+    "Load News": {"main": [[{"node": "Verify Approved", "type": "main", "index": 0}]]},
+    "Verify Approved": {"main": [[{"node": "Add Platforms", "type": "main", "index": 0}]]},
+    "Add Platforms": {"main": [[{"node": "Split Platforms", "type": "main", "index": 0}]]},
+    "Split Platforms": {"main": [[{"node": "Set Platform", "type": "main", "index": 0}]]},
+    "Set Platform": {"main": [[{"node": "AI Agent Content Creator", "type": "main", "index": 0}]]},
+    "AI Agent Content Creator": {"main": [[{"node": "Save Content", "type": "main", "index": 0}]]},
+    "Save Content": {"main": [[
+      {"node": "IF LinkedIn", "type": "main", "index": 0},
+      {"node": "IF Facebook", "type": "main", "index": 0},
+      {"node": "IF Instagram", "type": "main", "index": 0},
+      {"node": "IF Twitter", "type": "main", "index": 0}
+    ]]},
+    "IF LinkedIn": {"main": [[{"node": "Publish LinkedIn (Mock)", "type": "main", "index": 0}], []]},
+    "IF Facebook": {"main": [[{"node": "Publish Facebook (Mock)", "type": "main", "index": 0}], []]},
+    "IF Instagram": {"main": [[{"node": "Publish Instagram (Mock)", "type": "main", "index": 0}], []]},
+    "IF Twitter": {"main": [[{"node": "Publish Twitter (Mock)", "type": "main", "index": 0}], []]},
+    "Publish LinkedIn (Mock)": {"main": [[{"node": "Merge Publishes", "type": "main", "index": 0}]]},
+    "Publish Facebook (Mock)": {"main": [[{"node": "Merge Publishes", "type": "main", "index": 1}]]},
+    "Publish Instagram (Mock)": {"main": [[{"node": "Merge Publishes", "type": "main", "index": 2}]]},
+    "Publish Twitter (Mock)": {"main": [[{"node": "Merge Publishes", "type": "main", "index": 3}]]},
+    "Merge Publishes": {"main": [[{"node": "Update Published", "type": "main", "index": 0}]]},
+    "Update Published": {"main": [[{"node": "Collect Results", "type": "main", "index": 0}]]},
+    "Collect Results": {"main": [[{"node": "Stats", "type": "main", "index": 0}]]},
+    "Stats": {"main": [[{"node": "Response", "type": "main", "index": 0}]]},
+    "Gemini LLM": {"ai_languageModel": [[{"node": "AI Agent Content Creator", "type": "ai_languageModel", "index": 0}]]},
+    "Parse Content": {"ai_outputParser": [[{"node": "AI Agent Content Creator", "type": "ai_outputParser", "index": 0}]]},
+    "Tool: Image": {"ai_tool": [[{"node": "AI Agent Content Creator", "type": "ai_tool", "index": 0}]]},
+    "Tool: DB": {"ai_tool": [[{"node": "AI Agent Content Creator", "type": "ai_tool", "index": 1}]]}
+  },
+  "settings": {},
+  "staticData": null
+}

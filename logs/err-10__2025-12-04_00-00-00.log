@@ -1,0 +1,1118 @@
+2025-12-03T16:52:29: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/un-italiano-quattro-partira-il-ponte-dell-immacolata-AIYr6UD",
+    category: null,
+    rank: 2,
+    title: null,
+    summary: null,
+    why_relevant: null,
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/enrico-netti.html\">Enrico Netti</a>",
+    link: "https://www.ilsole24ore.com/art/un-italiano-quattro-partira-il-ponte-dell-immacolata-AIYr6UD",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:52:29: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/riparte-maratona-telethon-13-21-dicembre-tutte-reti-rai-AIfSheD",
+    category: null,
+    rank: 1,
+    title: null,
+    summary: null,
+    why_relevant: null,
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/vera-viola.html\">Vera Viola</a>",
+    link: "https://www.ilsole24ore.com/art/riparte-maratona-telethon-13-21-dicembre-tutte-reti-rai-AIfSheD",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:52:29: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/hbo-max-italia-13-gennaio-sport-live-e-grandi-franchise-sfidare-big-streaming-AI3mSkC",
+    category: null,
+    rank: 4,
+    title: null,
+    summary: null,
+    why_relevant: null,
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/andrea-biondi.html\">Andrea Biondi</a>",
+    link: "https://www.ilsole24ore.com/art/hbo-max-italia-13-gennaio-sport-live-e-grandi-franchise-sfidare-big-streaming-AI3mSkC",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:52:29: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/via-libera-superconduttori-migliorare-batterie-navi-elettriche-AIZ1FkC",
+    category: null,
+    rank: 3,
+    title: null,
+    summary: null,
+    why_relevant: null,
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/raoul-de-forcade.html\">Raoul de Forcade</a>",
+    link: "https://www.ilsole24ore.com/art/via-libera-superconduttori-migliorare-batterie-navi-elettriche-AIZ1FkC",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:52:29: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/manager-sfida-algoritmi-AHMNmezD",
+    category: null,
+    rank: 5,
+    title: null,
+    summary: null,
+    why_relevant: null,
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/luca-orlando.html\">Luca Orlando</a>",
+    link: "https://www.ilsole24ore.com/art/manager-sfida-algoritmi-AHMNmezD",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:58:17: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/manager-sfida-algoritmi-AHMNmezD",
+    category: "impresa",
+    rank: 1,
+    title: "AI e Formazione Manageriale: La Nuova Sfida per Imprese Italiane",
+    summary: "Cresce la domanda di formazione manageriale in Intelligenza Artificiale. Essenziale per imprenditori e PMI per innovare, digitalizzare e restare competitivi.",
+    why_relevant: "Per rimanere competitivi e cogliere le opportunità della digitalizzazione, i membri UNSIC devono investire nella formazione AI per i propri manager e la propria forza lavoro.",
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/luca-orlando.html\">Luca Orlando</a>",
+    link: "https://www.ilsole24ore.com/art/manager-sfida-algoritmi-AHMNmezD",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:58:17: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/un-italiano-quattro-partira-il-ponte-dell-immacolata-AIYr6UD",
+    category: "N/A",
+    rank: 2,
+    title: "Ponte Immacolata: Viaggi Italiani, un Quarto in Partenza",
+    summary: "Circa 13,9 milioni di italiani hanno programmato un viaggio per il ponte dell'Immacolata, con l'88% che rimane in Italia. Notizia generale sul trend dei viaggi.",
+    why_relevant: "Fornisce un contesto generale sui consumi e il turismo domestico, ma non offre informazioni actionable o cambiamenti normativi diretti per i membri UNSIC.",
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/enrico-netti.html\">Enrico Netti</a>",
+    link: "https://www.ilsole24ore.com/art/un-italiano-quattro-partira-il-ponte-dell-immacolata-AIYr6UD",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:58:17: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/via-libera-superconduttori-migliorare-batterie-navi-elettriche-AIZ1FkC",
+    category: "N/A",
+    rank: 3,
+    title: "Via libera ai superconduttori per migliorare le batterie delle navi elettriche",
+    summary: "La notizia riguarda lo sviluppo di superconduttori per batterie di navi elettriche, una tecnologia in fase di test senza impatto diretto immediato o opportunità concrete per i membri UNSIC.",
+    why_relevant: "Questa notizia non ha un impatto diretto o un'opportunità immediata per la maggior parte dei membri UNSIC (imprenditori, agricoltori, partite IVA, PMI) in quanto si tratta di un avanzamento tecnologico specifico e non di una misura economica, fiscale o normativa.",
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/raoul-de-forcade.html\">Raoul de Forcade</a>",
+    link: "https://www.ilsole24ore.com/art/via-libera-superconduttori-migliorare-batterie-navi-elettriche-AIZ1FkC",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:58:17: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/hbo-max-italia-13-gennaio-sport-live-e-grandi-franchise-sfidare-big-streaming-AI3mSkC",
+    category: "N/A",
+    rank: 4,
+    title: null,
+    summary: "Notizia riguardante il lancio di un servizio di streaming. Non direttamente rilevante per imprenditori, coltivatori, partite IVA e PMI italiane. Non offre opportunità o impatti normativi specifici per i membri UNSIC.",
+    why_relevant: null,
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/andrea-biondi.html\">Andrea Biondi</a>",
+    link: "https://www.ilsole24ore.com/art/hbo-max-italia-13-gennaio-sport-live-e-grandi-franchise-sfidare-big-streaming-AI3mSkC",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T16:58:17: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/riparte-maratona-telethon-13-21-dicembre-tutte-reti-rai-AIfSheD",
+    category: "N/A",
+    rank: 5,
+    title: "Maratona Telethon 2023: Raccolta fondi per ricerca malattie rare su Rai",
+    summary: "Notizia riguardante la maratona Telethon per la raccolta fondi destinati alla ricerca sulle malattie genetiche rare, in onda dal 13 al 21 dicembre sulle reti Rai.",
+    why_relevant: "La notizia non ha rilevanza diretta per gli imprenditori, coltivatori o partite IVA associati a UNSIC, in quanto non presenta impatti economici, normativi o opportunità lavorative/fiscali specifiche per le categorie di riferimento.",
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/vera-viola.html\">Vera Viola</a>",
+    link: "https://www.ilsole24ore.com/art/riparte-maratona-telethon-13-21-dicembre-tutte-reti-rai-AIfSheD",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T17:03:07: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    article_id: "https://www.ilsole24ore.com/art/manager-sfida-algoritmi-AHMNmezD",
+    category: "impresa",
+    rank: 1,
+    title: "AI e Formazione Manageriale: La Nuova Sfida per Imprese Italiane",
+    summary: "Cresce la domanda di formazione manageriale in Intelligenza Artificiale. Essenziale per imprenditori e PMI per innovare, digitalizzare e restare competitivi.",
+    why_relevant: "Per rimanere competitivi e cogliere le opportunità della digitalizzazione, i membri UNSIC devono investire nella formazione AI per i propri manager e la propria forza lavoro.",
+    source: "di <a href=\"https://argomenti.ilsole24ore.com/luca-orlando.html\">Luca Orlando</a>",
+    link: "https://www.ilsole24ore.com/art/manager-sfida-algoritmi-AHMNmezD",
+    status: "pending",
++   pillar: String
+  }
+}
+
+Argument `pillar` is missing.
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T17:15:18: N8N webhook failed: {"code":404,"message":"The requested webhook \"POST unsic-approve\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+2025-12-03T17:26:09: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:26:09: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:26:09: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:26:09: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:26:09: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:29:27: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`article_id`)
+    at async E (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:1884)
+    at async d (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:5313)
+    at async l (.next/server/chunks/[root-of-the-server]__8b561955._.js:1:6351) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T17:41:43: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:44: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:45: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:46: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:46: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:47: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:48: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:48: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:49: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:50: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:51: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:51: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:52: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:53: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:53: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:41:54: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames
+2025-12-03T17:55:08: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "facebook",
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   content_text: String
+  }
+}
+
+Argument `content_text` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T17:55:08: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "linkedin",
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   content_text: String
+  }
+}
+
+Argument `content_text` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T17:55:09: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "instagram",
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   content_text: String
+  }
+}
+
+Argument `content_text` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T17:55:09: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "twitter",
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   content_text: String
+  }
+}
+
+Argument `content_text` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:00:04: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "linkedin",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:00:04: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "facebook",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:00:04: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "instagram",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:00:04: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "twitter",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:01:12: Error creating content: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+
+Foreign key constraint violated: `unsic_content_news_id_fkey (index)`
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5427)
+    at async l (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:6465) {
+  code: 'P2003',
+  clientVersion: '5.22.0',
+  meta: [Object]
+}
+2025-12-03T18:03:47: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "facebook",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:03:47: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "linkedin",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:03:47: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "instagram",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:03:47: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "twitter",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:06:42: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "linkedin",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:06:42: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "facebook",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:06:42: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "instagram",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:06:42: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "twitter",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:14:16: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "linkedin",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:14:16: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "facebook",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:14:16: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "instagram",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:14:16: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "twitter",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:20:19: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "facebook",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:20:19: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "linkedin",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:20:19: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "instagram",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:20:19: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "twitter",
+    content_text: null,
+    content_image_url: null,
+    hashtags: [],
+    status: "ready",
+    scheduled_for: null,
++   news: {
++     create: UnsicNewsCreateWithoutContentInput | UnsicNewsUncheckedCreateWithoutContentInput,
++     connectOrCreate: UnsicNewsCreateOrConnectWithoutContentInput,
++     connect: UnsicNewsWhereUniqueInput
++   }
+  }
+}
+
+Argument `news` is missing.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:30:35: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "=cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "=linkedin",
+    content_text: "=Il settore dell'edilizia in legno sta vivendo una crescita eccezionale, spinto dal PNRR! Si prevede un'espansione del 20% nel settore pubblico, raggiungendo un valore di 2,3 miliardi di euro. Questa è un'opportunità d'oro per imprese, PMI e liberi professionisti.\n\nIl PNRR sta aprendo le porte a numerosi appalti pubblici e progetti di sviluppo, rendendo questo un momento cruciale per chi opera nell'edilizia, nelle costruzioni in legno e nelle relative forniture. Non perdete l'occasione di cogliere queste nuove sfide e opportunità!",
+    content_image_url: null,
+    hashtags: "=ediliziainlegno,PNRR,crescita,opportunità,appaltipubblici,PMI,imprese,liberiprofessionisti,costruzioniinlegno",
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "ready",
+    scheduled_for: null
+  }
+}
+
+Argument `hashtags`: Invalid value provided. Expected UnsicContentCreatehashtagsInput or String[], provided String.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:30:35: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "=cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "=facebook",
+    content_text: "=Il settore dell'edilizia in legno sta vivendo una crescita straordinaria, spinto dal PNRR! 🌳\n\nGrazie agli investimenti del Piano Nazionale di Ripresa e Resilienza, il comparto ha registrato un'impennata del 20% nel settore pubblico, raggiungendo un valore di 2,3 miliardi di euro.\n\nQuesta è un'opportunità d'oro per imprese, PMI e liberi professionisti del settore edile e delle forniture. Non perdetevela!\n\n#EdiliziaLegno #PNRR #CrescitaEconomica #Opportunità #PMI #Costruzioni",
+    content_image_url: null,
+    hashtags: "=EdiliziaLegno,PNRR,CrescitaEconomica,Opportunità,PMI,Costruzioni",
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "ready",
+    scheduled_for: null
+  }
+}
+
+Argument `hashtags`: Invalid value provided. Expected UnsicContentCreatehashtagsInput or String[], provided String.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:30:35: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "=cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "=instagram",
+    content_text: "=Edilizia in legno: il PNRR accelera la crescita a 2,3 miliardi! 🌳\n\nGrazie ai fondi del Piano Nazionale di Ripresa e Resilienza, il settore dell'edilizia in legno nel comparto pubblico registra un'impennata del +20%. Un'opportunità d'oro per imprese, PMI e partite IVA che cercano nuovi appalti e sviluppo.\n\nNon perdete il treno del futuro!",
+    content_image_url: null,
+    hashtags: "=#ediliziainlegno,#legno,#pnrr,#crescita,#opportunità,#imprese,#pmi,#appalti,#pubblico,#sviluppo,#costruzioni,#sostenibilità,#greenbuilding,#madeinitaly,#innovazione,#ediliziapubblica,#bandi,#fondi,#architettura,#design,#ingegneria,#lavoro,#professionisti,#aziende,#risorse,#innovazione,#futuro,#italia,#edilizia,#costruzioniverdi",
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "ready",
+    scheduled_for: null
+  }
+}
+
+Argument `hashtags`: Invalid value provided. Expected UnsicContentCreatehashtagsInput or String[], provided String.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}
+2025-12-03T18:30:35: Error creating content: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicContent.create()` invocation:
+
+{
+  data: {
+    news_id: "=cmiqa3fq9000qkdhqi3zslsq3",
+    platform: "=twitter",
+    content_text: "=Tweet 1:\nIl settore dell'edilizia in legno vola grazie al PNRR! 🚀 Crescita del 20% nel settore pubblico, raggiungendo 2,3 miliardi di euro. Un'onda di opportunità sta arrivando per imprese e PMI. #ediliziainlegno #PNRR #crescita #innovazione\n\nTweet 2:\nIl PNRR è il motore della trasformazione: l'edilizia in legno beneficia di investimenti significativi, aprendo le porte a nuovi appalti pubblici. Le imprese che sapranno cogliere questa sfida avranno un vantaggio competitivo. #appaltipubblici #costruzioniverdi #sostenibilità\n\nTweet 3:\nPMI e partite IVA, è il momento di agire! La crescita del settore edile in legno offre un terreno fertile per lo sviluppo del vostro business. Informatevi sulle opportunità e preparatevi a innovare. #PMI #imprenditoria #partitaiva #edilizia\n\nTweet 4:\nUn futuro più verde e sostenibile passa anche dall'edilizia in legno. Il PNRR accelera questa transizione, creando valore e occupazione. Siete pronti a costruire il domani? #futurosostenibile #legno #efficienzaenergetica #opportunitàlavorative",
+    content_image_url: null,
+    hashtags: "=ediliziainlegno,PNRR,crescita,innovazione,appaltipubblici,costruzioniverdi,sostenibilità,PMI,imprenditoria,partitaiva,edilizia,futurosostenibile,legno,efficienzaenergetica,opportunitàlavorative",
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "ready",
+    scheduled_for: null
+  }
+}
+
+Argument `hashtags`: Invalid value provided. Expected UnsicContentCreatehashtagsInput or String[], provided String.
+    at async y (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:1931)
+    at async d (.next/server/chunks/[root-of-the-server]__83dfc2a5._.js:1:5457) {
+  clientVersion: '5.22.0'
+}

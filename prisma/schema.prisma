@@ -1,0 +1,180 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Sistema Utenti con Ruoli
+model User {
+  id            String   @id @default(cuid())
+  username      String   @unique
+  password_hash String   // bcrypt hash
+  role          String   // giornalista, direttore, sviluppatore
+  display_name  String
+
+  is_active     Boolean  @default(true)
+  last_login    DateTime?
+
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  // Relazioni
+  approved_news UnsicNews[] @relation("ApprovedBy")
+
+  @@index([role])
+  @@map("users")
+}
+
+model UnsicNews {
+  id            String   @id @default(cuid())
+  category      String
+  pillar        String
+  rank          Int
+  title         String
+  summary       String   @db.Text
+  why_relevant  String   @db.Text
+  source        String
+  link          String   @unique
+  article_id    String?  @unique
+
+  // AI Generated Copy
+  copy_linkedin     String?   @db.Text
+  copy_twitter      String?   @db.Text
+  copy_instagram    String?   @db.Text
+  copy_generated_at DateTime?
+
+  // Design Assets
+  bg_image_url      String?
+  final_image_url   String?
+  canva_design_id   String?
+
+  // Social Publishing
+  linkedin_post_id  String?
+  twitter_post_id   String?
+  instagram_post_id String?
+  publish_error     String?   @db.Text
+
+  // Timestamps
+  published_at  DateTime?
+  approved_at   DateTime?
+  status        String   @default("pending")
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  // Approvazione
+  approved_by_id String?
+  approved_by    User?    @relation("ApprovedBy", fields: [approved_by_id], references: [id])
+
+  // Relations
+  logs          UnsicLog[]
+  content       UnsicContent[]
+
+  @@index([status])
+  @@index([created_at])
+  @@index([link])
+  @@map("unsic_news")
+}
+
+// Activity Logs per workflow
+model UnsicLog {
+  id         String     @id @default(cuid())
+  news_id    String?
+  news       UnsicNews? @relation(fields: [news_id], references: [id], onDelete: Cascade)
+
+  workflow   String     // scraper, publisher, monitor
+  level      String     // info, warning, error, critical
+  message    String     @db.Text
+  details    Json?      // Metadata aggiuntivi
+
+  created_at DateTime   @default(now())
+
+  @@index([news_id])
+  @@index([workflow])
+  @@index([level])
+  @@index([created_at])
+  @@map("unsic_logs")
+}
+
+// Content generati per ogni piattaforma social
+model UnsicContent {
+  id                Int       @id @default(autoincrement())
+  news_id           String
+  news              UnsicNews @relation(fields: [news_id], references: [id], onDelete: Cascade)
+
+  platform          String    // linkedin, facebook, instagram, twitter
+  content_text      String    @db.Text
+  content_image_url String?   @db.Text
+  hashtags          String[]
+
+  status            String    @default("draft") // draft, ready, published, failed
+  scheduled_for     DateTime?
+  published_at      DateTime?
+  platform_post_id  String?
+
+  engagement        Json      @default("{}")
+
+  created_at        DateTime  @default(now())
+  updated_at        DateTime  @updatedAt
+
+  // Relations
+  analytics         UnsicAnalytics[]
+
+  @@index([news_id])
+  @@index([status])
+  @@index([scheduled_for])
+  @@map("unsic_content")
+}
+
+// Analytics per tracciare performance contenuti
+model UnsicAnalytics {
+  id            String        @id @default(cuid())
+  content_id    Int
+  content       UnsicContent  @relation(fields: [content_id], references: [id], onDelete: Cascade)
+
+  metric        String        // impressions, likes, shares, comments, clicks
+  value         Int
+  timestamp     DateTime
+
+  created_at    DateTime      @default(now())
+
+  @@index([content_id])
+  @@index([metric])
+  @@index([timestamp])
+  @@map("unsic_analytics")
+}
+
+// Content Templates per ogni categoria
+model UnsicContentTemplate {
+  id            Int      @id @default(autoincrement())
+  category      String   // fisco, lavoro, agricoltura, pnrr, made_in_italy, impresa
+  platform      String   // linkedin, facebook, instagram, twitter
+
+  template_text String   @db.Text // Template con placeholders {{title}}, {{summary}}
+  style_guide   Json     // Tone, hashtag rules, CTA examples
+
+  is_active     Boolean  @default(true)
+
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  @@unique([category, platform])
+  @@map("unsic_content_templates")
+}
+
+// Social Media Configuration (credenziali criptate)
+model SocialConfig {
+  id            String    @id @default(cuid())
+  platform      String    @unique // linkedin, twitter, instagram
+
+  access_token  String    @db.Text // Encrypted
+  refresh_token String?   @db.Text // Encrypted
+  token_expires DateTime?
+
+  config_json   Json?     // Rate limits, account IDs, etc
+
+  updated_at    DateTime  @updatedAt
+
+  @@map("social_config")
+}

@@ -1,0 +1,124 @@
+{
+  "sources": [
+    {
+      "id": "ansa_economia",
+      "name": "ANSA Economia",
+      "url": "https://www.ansa.it/sito/notizie/economia/economia_rss.xml",
+      "category_hint": "fisco,lavoro,impresa",
+      "enabled": true
+    },
+    {
+      "id": "ansa_agricoltura",
+      "name": "ANSA Terra e Gusto",
+      "url": "https://www.ansa.it/canale_terraegusto/rss.xml",
+      "category_hint": "agricoltura,made_in_italy",
+      "enabled": true
+    },
+    {
+      "id": "sole24ore_economia",
+      "name": "Il Sole 24 Ore - Economia",
+      "url": "https://www.ilsole24ore.com/rss/economia.xml",
+      "category_hint": "fisco,impresa,pnrr",
+      "enabled": true
+    },
+    {
+      "id": "sole24ore_fisco",
+      "name": "Il Sole 24 Ore - Fisco e Tasse",
+      "url": "https://www.ilsole24ore.com/rss/norme-e-tributi.xml",
+      "category_hint": "fisco",
+      "enabled": true
+    },
+    {
+      "id": "repubblica_economia",
+      "name": "Repubblica - Economia",
+      "url": "https://www.repubblica.it/rss/economia/rss2.0.xml",
+      "category_hint": "fisco,lavoro,impresa",
+      "enabled": true
+    },
+    {
+      "id": "corriere_economia",
+      "name": "Corriere della Sera - Economia",
+      "url": "https://www.corriere.it/rss/economia.xml",
+      "category_hint": "fisco,lavoro,impresa",
+      "enabled": true
+    },
+    {
+      "id": "governo_comunicati",
+      "name": "Governo Italiano - Comunicati",
+      "url": "https://www.governo.it/rss",
+      "category_hint": "fisco,lavoro,pnrr",
+      "enabled": true
+    },
+    {
+      "id": "inps_news",
+      "name": "INPS - Comunicati Stampa",
+      "url": "https://www.inps.it/news/rss",
+      "category_hint": "lavoro",
+      "enabled": true
+    },
+    {
+      "id": "agenzie_entrate",
+      "name": "Agenzia delle Entrate - News",
+      "url": "https://www.agenziaentrate.gov.it/rss",
+      "category_hint": "fisco",
+      "enabled": true
+    },
+    {
+      "id": "mise_comunicati",
+      "name": "MISE - Comunicati Stampa",
+      "url": "https://www.mise.gov.it/rss",
+      "category_hint": "impresa,pnrr,made_in_italy",
+      "enabled": true
+    },
+    {
+      "id": "confagricoltura",
+      "name": "Confagricoltura - News",
+      "url": "https://www.confagricoltura.it/rss",
+      "category_hint": "agricoltura",
+      "enabled": true
+    },
+    {
+      "id": "milanofinanza",
+      "name": "Milano Finanza",
+      "url": "https://www.milanofinanza.it/rss",
+      "category_hint": "fisco,impresa",
+      "enabled": true
+    },
+    {
+      "id": "italiaoggi_fisco",
+      "name": "Italia Oggi - Fisco",
+      "url": "https://www.italiaoggi.it/rss/fisco",
+      "category_hint": "fisco",
+      "enabled": false
+    },
+    {
+      "id": "agripress",
+      "name": "Agripress - Agricoltura",
+      "url": "https://www.agripress.it/rss",
+      "category_hint": "agricoltura",
+      "enabled": false
+    },
+    {
+      "id": "ict_business",
+      "name": "ICT Business - Digitale",
+      "url": "https://www.ictbusiness.it/rss",
+      "category_hint": "impresa,pnrr",
+      "enabled": false
+    }
+  ],
+  "config": {
+    "scraping_schedule": "0 7 * * *",
+    "max_articles_per_source": 20,
+    "filter_threshold_score": 70,
+    "top_news_limit": 5,
+    "dedup_similarity_threshold": 0.85,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 5
+  },
+  "notes": {
+    "enabled": "Le fonti con enabled=true vengono scansionate. Disabilita se RSS non funzionante.",
+    "category_hint": "Categorie suggerite per questa fonte (aiuta il filtering AI)",
+    "url_notes": "Alcuni URL RSS potrebbero cambiare. Verificare periodicamente.",
+    "maintenance": "Test manual: curl -I {url} per verificare status"
+  }
+}

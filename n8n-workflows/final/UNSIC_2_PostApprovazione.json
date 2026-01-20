@@ -1,0 +1,247 @@
+{
+  "name": "UNSIC 2️⃣ Post-Approvazione (AI Content Creator)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "news-approved",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Webhook: News Approved",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 400],
+      "webhookId": "news-approved",
+      "id": "webhook"
+    },
+    {
+      "parameters": {
+        "url": "=https://unsic.fodivps1.cloud/api/news/{{ $json.body.news_id }}",
+        "options": {}
+      },
+      "name": "Load Approved News",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 400],
+      "id": "load-news"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{
+            "value1": "={{ $json.status }}",
+            "operation": "equals",
+            "value2": "approved"
+          }]
+        }
+      },
+      "name": "Verify Approved",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [680, 400],
+      "id": "verify"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "platforms",
+            "value": "=['linkedin', 'facebook', 'instagram', 'twitter']",
+            "type": "array"
+          }]
+        },
+        "includeOtherFields": true
+      },
+      "name": "Add Platforms",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [900, 400],
+      "id": "platforms"
+    },
+    {
+      "parameters": {
+        "fieldName": "platforms"
+      },
+      "name": "Split Platforms",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [1120, 400],
+      "id": "split"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "current_platform",
+            "value": "={{ $json.platforms }}",
+            "type": "string"
+          }]
+        },
+        "includeOtherFields": true
+      },
+      "name": "Set Platform",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1340, 400],
+      "id": "set-platform"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "AI Agent Content Creator",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [1560, 400],
+      "id": "agent-content"
+    },
+    {
+      "parameters": {
+        "model": "gemini-3-flash-preview",
+        "options": {
+          "temperature": 0.7,
+          "maxOutputTokens": 2048
+        }
+      },
+      "name": "Gemini LLM Creator",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [1560, 620],
+      "id": "gemini-creator",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "A1nGwfr8Myr9lwVe",
+          "name": "UNSIC Gemini API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchema": "{\"type\":\"object\",\"properties\":{\"text\":{\"type\":\"string\"},\"hashtags\":{\"type\":\"array\"},\"cta\":{\"type\":\"string\"},\"tone_used\":{\"type\":\"string\"},\"char_count\":{\"type\":\"number\"}},\"required\":[\"text\",\"hashtags\"]}"
+      },
+      "name": "Parse Content",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [1780, 200],
+      "id": "parser-content"
+    },
+    {
+      "parameters": {
+        "name": "generate_image",
+        "description": "Generate category-specific professional images using Nano-Banana. Specify category in prompt for appropriate styling.",
+        "method": "POST",
+        "url": "http://172.19.0.1:8100/api/generate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({prompt: $json.prompt, width: $json.width || 1200, height: $json.height || 630, model: 'flux-schnell'}) }}"
+      },
+      "name": "Tool: Image Generator",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [1360, 620],
+      "id": "tool-img-content"
+    },
+    {
+      "parameters": {
+        "name": "query_database",
+        "description": "Get related news or context from database"
+      },
+      "name": "Tool: DB Query",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [1360, 800],
+      "id": "tool-db-content"
+    },
+    {
+      "parameters": {
+        "sessionKey": "={{ 'content_' + $('Set Platform').item.json.id }}"
+      },
+      "name": "Memory Content",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.2,
+      "position": [1780, 620],
+      "id": "memory-content",
+      "credentials": {
+        "postgres": {
+          "id": "unsic-postgres",
+          "name": "UNSIC PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unsic.fodivps1.cloud/api/content",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  news_id: $('Set Platform').item.json.id,\n  platform: $('Set Platform').item.json.current_platform,\n  content_text: $json.text,\n  hashtags: $json.hashtags,\n  content_image_url: $json.image_url || '',\n  category: $('Set Platform').item.json.category,\n  status: 'ready'\n}) }}"
+      },
+      "name": "Save Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2000, 400],
+      "id": "save-content"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll"
+      },
+      "name": "Merge All Content",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [2220, 400],
+      "id": "merge-content"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [{
+            "id": "1",
+            "name": "total_content_created",
+            "value": "={{ $items().length }}",
+            "type": "number"
+          }]
+        }
+      },
+      "name": "Stats",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2440, 400],
+      "id": "stats-final"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({success: true, news_id: $('Load Approved News').item.json.id, content_created: $json.total_content_created, platforms: ['linkedin','facebook','instagram','twitter']}) }}"
+      },
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [2660, 400],
+      "id": "response"
+    }
+  ],
+  "connections": {
+    "Webhook: News Approved": {"main": [[{"node": "Load Approved News", "type": "main", "index": 0}]]},
+    "Load Approved News": {"main": [[{"node": "Verify Approved", "type": "main", "index": 0}]]},
+    "Verify Approved": {"main": [[{"node": "Add Platforms", "type": "main", "index": 0}]]},
+    "Add Platforms": {"main": [[{"node": "Split Platforms", "type": "main", "index": 0}]]},
+    "Split Platforms": {"main": [[{"node": "Set Platform", "type": "main", "index": 0}]]},
+    "Set Platform": {"main": [[{"node": "AI Agent Content Creator", "type": "main", "index": 0}]]},
+    "AI Agent Content Creator": {"main": [[{"node": "Save Content", "type": "main", "index": 0}]]},
+    "Save Content": {"main": [[{"node": "Merge All Content", "type": "main", "index": 0}]]},
+    "Merge All Content": {"main": [[{"node": "Stats", "type": "main", "index": 0}]]},
+    "Stats": {"main": [[{"node": "Webhook Response", "type": "main", "index": 0}]]},
+    "Gemini LLM Creator": {"ai_languageModel": [[{"node": "AI Agent Content Creator", "type": "ai_languageModel", "index": 0}]]},
+    "Parse Content": {"ai_outputParser": [[{"node": "AI Agent Content Creator", "type": "ai_outputParser", "index": 0}]]},
+    "Tool: Image Generator": {"ai_tool": [[{"node": "AI Agent Content Creator", "type": "ai_tool", "index": 0}]]},
+    "Tool: DB Query": {"ai_tool": [[{"node": "AI Agent Content Creator", "type": "ai_tool", "index": 1}]]},
+    "Memory Content": {"ai_memory": [[{"node": "AI Agent Content Creator", "type": "ai_memory", "index": 0}]]}
+  },
+  "settings": {},
+  "staticData": null
+}

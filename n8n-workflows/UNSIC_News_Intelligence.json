@@ -1,0 +1,555 @@
+{
+  "name": "UNSIC News Intelligence",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 1
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger (Every Hour)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300],
+      "id": "schedule-trigger-1"
+    },
+    {
+      "parameters": {
+        "url": "https://www.ansa.it/sito/notizie/economia/economia_rss.xml",
+        "options": {}
+      },
+      "name": "RSS ANSA Economia",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [500, 200],
+      "id": "rss-ansa-1"
+    },
+    {
+      "parameters": {
+        "url": "https://www.ilsole24ore.com/rss/economia.xml",
+        "options": {}
+      },
+      "name": "RSS Sole24Ore",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [500, 300],
+      "id": "rss-sole24-1"
+    },
+    {
+      "parameters": {
+        "url": "https://www.governo.it/rss/economia",
+        "options": {}
+      },
+      "name": "RSS Governo Economia",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [500, 400],
+      "id": "rss-governo-1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "name": "Merge RSS Feeds",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [750, 300],
+      "id": "merge-rss-1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{ $json.isoDate }}",
+              "operation": "after",
+              "value2": "={{ $now.minus({ hours: 24 }).toISO() }}"
+            }
+          ]
+        }
+      },
+      "name": "Filter Last 24h",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [1000, 300],
+      "id": "filter-24h-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "source",
+              "name": "source",
+              "type": "string",
+              "value": "={{ $json.creator || 'Unknown' }}"
+            },
+            {
+              "id": "link",
+              "name": "link",
+              "type": "string",
+              "value": "={{ $json.link }}"
+            },
+            {
+              "id": "published_at",
+              "name": "published_at",
+              "type": "string",
+              "value": "={{ $json.isoDate }}"
+            },
+            {
+              "id": "raw_title",
+              "name": "raw_title",
+              "type": "string",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "id": "raw_content",
+              "name": "raw_content",
+              "type": "string",
+              "value": "={{ $json.contentSnippet || $json.content }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract News Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1250, 300],
+      "id": "set-extract-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "analysis_prompt",
+              "name": "analysis_prompt",
+              "type": "string",
+              "value": "={{ `Titolo: ${$json.raw_title}\nContenuto: ${$json.raw_content}\n\nSei un analista esperto per UNSIC (sindacato imprenditori e coltivatori italiani).\n\nAnalizza questa notizia e assegnale un punteggio 0-100 basato su:\n- Rilevanza per imprenditori/coltivatori (40pt)\n- Impatto economico/normativo (30pt)\n- Urgenza temporale (20pt)\n- Opportunità concrete (10pt)\n\nRispondi SOLO in formato JSON (niente markdown):\n{\n  \"score\": <0-100>,\n  \"category\": \"<fisco|lavoro|agricoltura|pnrr|made_in_italy|impresa>\",\n  \"pillar\": \"<normativo|economico|istituzionale|opportunita>\",\n  \"title\": \"<titolo ottimizzato max 80 char>\",\n  \"summary\": \"<riassunto 2-3 frasi max 200 char>\",\n  \"why_relevant\": \"<spiegazione rilevanza per UNSIC max 150 char>\"\n}` }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Build AI Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1500, 300],
+      "id": "set-prompt-1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "={{ $env.GOOGLE_GEMINI_API_KEY }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  contents: [{\n    parts: [{\n      text: $json.analysis_prompt\n    }]\n  }],\n  generationConfig: {\n    temperature: 0.3,\n    topK: 20,\n    topP: 0.8,\n    maxOutputTokens: 1024,\n    responseMimeType: 'application/json'\n  }\n}) }}",
+        "options": {}
+      },
+      "name": "Google Gemini Analysis",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1750, 300],
+      "id": "http-gemini-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ai_response",
+              "name": "ai_response",
+              "type": "object",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text) }}"
+            },
+            {
+              "id": "score",
+              "name": "score",
+              "type": "number",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).score }}"
+            },
+            {
+              "id": "category",
+              "name": "category",
+              "type": "string",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).category }}"
+            },
+            {
+              "id": "pillar",
+              "name": "pillar",
+              "type": "string",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).pillar }}"
+            },
+            {
+              "id": "title",
+              "name": "title",
+              "type": "string",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).title }}"
+            },
+            {
+              "id": "summary",
+              "name": "summary",
+              "type": "string",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).summary }}"
+            },
+            {
+              "id": "why_relevant",
+              "name": "why_relevant",
+              "type": "string",
+              "value": "={{ JSON.parse($json.candidates[0].content.parts[0].text).why_relevant }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Parse AI Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [2000, 300],
+      "id": "set-parse-1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.score }}",
+              "operation": "largerEqual",
+              "value2": 70
+            }
+          ]
+        }
+      },
+      "name": "Filter High Score (>= 70)",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [2250, 300],
+      "id": "filter-score-1"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "score",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Sort by Score DESC",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1.1,
+      "position": [2500, 300],
+      "id": "sort-score-1"
+    },
+    {
+      "parameters": {
+        "maxItems": 5,
+        "keepOnlySet": "keepOnlySet"
+      },
+      "name": "Limit Top 5",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [2750, 300],
+      "id": "limit-top5-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "rank",
+              "name": "rank",
+              "type": "number",
+              "value": "={{ $itemIndex + 1 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Add Rank",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [3000, 300],
+      "id": "set-rank-1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unsic.fodivps1.cloud/api/news",
+        "authentication": "none",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  category: $json.category,\n  pillar: $json.pillar,\n  rank: $json.rank,\n  title: $json.title,\n  summary: $json.summary,\n  why_relevant: $json.why_relevant,\n  source: $('Extract News Data').item.json.source,\n  link: $('Extract News Data').item.json.link,\n  published_at: $('Extract News Data').item.json.published_at\n}) }}",
+        "options": {}
+      },
+      "name": "Save to UNSIC DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3250, 300],
+      "id": "http-save-db-1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "name": "Collect Results",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [3500, 300],
+      "id": "merge-results-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "total_saved",
+              "name": "total_saved",
+              "type": "number",
+              "value": "={{ $items().length }}"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Build Summary",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [3750, 300],
+      "id": "set-summary-1"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger (Every Hour)": {
+      "main": [
+        [
+          {
+            "node": "RSS ANSA Economia",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Sole24Ore",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Governo Economia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS ANSA Economia": {
+      "main": [
+        [
+          {
+            "node": "Merge RSS Feeds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Sole24Ore": {
+      "main": [
+        [
+          {
+            "node": "Merge RSS Feeds",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS Governo Economia": {
+      "main": [
+        [
+          {
+            "node": "Merge RSS Feeds",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge RSS Feeds": {
+      "main": [
+        [
+          {
+            "node": "Filter Last 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Last 24h": {
+      "main": [
+        [
+          {
+            "node": "Extract News Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract News Data": {
+      "main": [
+        [
+          {
+            "node": "Build AI Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build AI Prompt": {
+      "main": [
+        [
+          {
+            "node": "Google Gemini Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Analysis": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Response": {
+      "main": [
+        [
+          {
+            "node": "Filter High Score (>= 70)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter High Score (>= 70)": {
+      "main": [
+        [
+          {
+            "node": "Sort by Score DESC",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort by Score DESC": {
+      "main": [
+        [
+          {
+            "node": "Limit Top 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit Top 5": {
+      "main": [
+        [
+          {
+            "node": "Add Rank",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Rank": {
+      "main": [
+        [
+          {
+            "node": "Save to UNSIC DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to UNSIC DB": {
+      "main": [
+        [
+          {
+            "node": "Collect Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect Results": {
+      "main": [
+        [
+          {
+            "node": "Build Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-12-03T10:00:00.000Z",
+      "updatedAt": "2025-12-03T10:00:00.000Z",
+      "id": "unsic-ai",
+      "name": "UNSIC AI"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-12-03T10:00:00.000Z",
+  "versionId": "1"
+}

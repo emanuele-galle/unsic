@@ -1,0 +1,717 @@
+{
+  "name": "UNSIC Social Publisher",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "unsic-publish",
+        "options": {}
+      },
+      "name": "Webhook Manual Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "unsic-publish",
+      "id": "webhook-publish-1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 1
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger (Hourly)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 500],
+      "id": "schedule-publish-1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "name": "Merge Triggers",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [500, 400],
+      "id": "merge-triggers-1"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://unsic.fodivps1.cloud/api/content?status=ready",
+        "authentication": "none",
+        "options": {}
+      },
+      "name": "Get Scheduled Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [750, 400],
+      "id": "http-get-content-1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{ $json.scheduled_for }}",
+              "operation": "beforeOrEqual",
+              "value2": "={{ $now.toISO() }}"
+            }
+          ]
+        }
+      },
+      "name": "Filter Due for Publishing",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [1000, 400],
+      "id": "filter-due-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "content_id",
+              "name": "content_id",
+              "type": "number",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "id": "platform",
+              "name": "platform",
+              "type": "string",
+              "value": "={{ $json.platform }}"
+            },
+            {
+              "id": "content_text",
+              "name": "content_text",
+              "type": "string",
+              "value": "={{ $json.content_text }}"
+            },
+            {
+              "id": "content_image_url",
+              "name": "content_image_url",
+              "type": "string",
+              "value": "={{ $json.content_image_url }}"
+            },
+            {
+              "id": "hashtags",
+              "name": "hashtags",
+              "type": "array",
+              "value": "={{ $json.hashtags }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract Content Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1250, 400],
+      "id": "set-extract-content-1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.platform }}",
+              "operation": "equals",
+              "value2": "linkedin"
+            }
+          ]
+        }
+      },
+      "name": "IF LinkedIn",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1500, 200],
+      "id": "if-linkedin-1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.platform }}",
+              "operation": "equals",
+              "value2": "facebook"
+            }
+          ]
+        }
+      },
+      "name": "IF Facebook",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1500, 400],
+      "id": "if-facebook-1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.platform }}",
+              "operation": "equals",
+              "value2": "instagram"
+            }
+          ]
+        }
+      },
+      "name": "IF Instagram",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1500, 600],
+      "id": "if-instagram-1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.platform }}",
+              "operation": "equals",
+              "value2": "twitter"
+            }
+          ]
+        }
+      },
+      "name": "IF Twitter",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1500, 800],
+      "id": "if-twitter-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "publish_status",
+              "name": "publish_status",
+              "type": "string",
+              "value": "published"
+            },
+            {
+              "id": "platform_post_id",
+              "name": "platform_post_id",
+              "type": "string",
+              "value": "={{ 'linkedin_mock_' + $now.toUnixInteger() }}"
+            },
+            {
+              "id": "published_at",
+              "name": "published_at",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "api_response",
+              "name": "api_response",
+              "type": "object",
+              "value": "={{ {success: true, platform: 'linkedin', message: 'LinkedIn API integration coming soon'} }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Publish to LinkedIn (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1750, 200],
+      "id": "set-linkedin-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "publish_status",
+              "name": "publish_status",
+              "type": "string",
+              "value": "published"
+            },
+            {
+              "id": "platform_post_id",
+              "name": "platform_post_id",
+              "type": "string",
+              "value": "={{ 'facebook_mock_' + $now.toUnixInteger() }}"
+            },
+            {
+              "id": "published_at",
+              "name": "published_at",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "api_response",
+              "name": "api_response",
+              "type": "object",
+              "value": "={{ {success: true, platform: 'facebook', message: 'Facebook Graph API integration coming soon'} }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Publish to Facebook (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1750, 400],
+      "id": "set-facebook-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "publish_status",
+              "name": "publish_status",
+              "type": "string",
+              "value": "published"
+            },
+            {
+              "id": "platform_post_id",
+              "name": "platform_post_id",
+              "type": "string",
+              "value": "={{ 'instagram_mock_' + $now.toUnixInteger() }}"
+            },
+            {
+              "id": "published_at",
+              "name": "published_at",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "api_response",
+              "name": "api_response",
+              "type": "object",
+              "value": "={{ {success: true, platform: 'instagram', message: 'Instagram Graph API integration coming soon'} }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Publish to Instagram (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1750, 600],
+      "id": "set-instagram-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "publish_status",
+              "name": "publish_status",
+              "type": "string",
+              "value": "published"
+            },
+            {
+              "id": "platform_post_id",
+              "name": "platform_post_id",
+              "type": "string",
+              "value": "={{ 'twitter_mock_' + $now.toUnixInteger() }}"
+            },
+            {
+              "id": "published_at",
+              "name": "published_at",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "api_response",
+              "name": "api_response",
+              "type": "object",
+              "value": "={{ {success: true, platform: 'twitter', message: 'Twitter API v2 integration coming soon'} }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Publish to Twitter (Mock)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1750, 800],
+      "id": "set-twitter-1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "name": "Merge Platform Results",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [2000, 500],
+      "id": "merge-platforms-1"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ 'https://unsic.fodivps1.cloud/api/content/' + $('Extract Content Data').item.json.content_id }}",
+        "authentication": "none",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  status: $json.publish_status,\n  platform_post_id: $json.platform_post_id,\n  published_at: $json.published_at\n}) }}",
+        "options": {}
+      },
+      "name": "Update Content Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2250, 500],
+      "id": "http-update-status-1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "name": "Collect All Updates",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [2500, 500],
+      "id": "merge-updates-1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "platform",
+              "renameField": true,
+              "outputFieldName": "platforms_published"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Aggregate Stats",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1.1,
+      "position": [2750, 500],
+      "id": "aggregate-stats-1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "total_published",
+              "name": "total_published",
+              "type": "number",
+              "value": "={{ $json.platforms_published ? $json.platforms_published.length : 0 }}"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "summary",
+              "name": "summary",
+              "type": "object",
+              "value": "={{ {\n  success: true,\n  total_published: $json.platforms_published ? $json.platforms_published.length : 0,\n  platforms: $json.platforms_published || [],\n  timestamp: $now.toISO()\n} }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Build Summary",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [3000, 500],
+      "id": "set-summary-publish-1"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.summary) }}",
+        "options": {}
+      },
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [3250, 300],
+      "id": "webhook-response-publish-1"
+    },
+    {
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "={{ $env.TELEGRAM_UNSIC_CHAT_ID || '123456789' }}",
+        "text": "={{ '🚀 **UNSIC Social Publisher**\\n━━━━━━━━━━━━━━━\\n📊 Pubblicati: ' + $('Build Summary').item.json.total_published + '\\n🎯 Piattaforme: ' + $('Build Summary').item.json.summary.platforms.join(', ') + '\\n⏰ ' + $now.toFormat('dd/MM/yyyy HH:mm') }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "name": "Telegram Notification",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [3250, 500],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-unsic",
+          "name": "UNSIC Telegram Bot"
+        }
+      },
+      "id": "telegram-notify-1"
+    }
+  ],
+  "connections": {
+    "Webhook Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Merge Triggers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger (Hourly)": {
+      "main": [
+        [
+          {
+            "node": "Merge Triggers",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Triggers": {
+      "main": [
+        [
+          {
+            "node": "Get Scheduled Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Scheduled Content": {
+      "main": [
+        [
+          {
+            "node": "Filter Due for Publishing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Due for Publishing": {
+      "main": [
+        [
+          {
+            "node": "Extract Content Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Content Data": {
+      "main": [
+        [
+          {
+            "node": "IF LinkedIn",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF Facebook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF Instagram",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF Twitter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Publish to LinkedIn (Mock)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Facebook": {
+      "main": [
+        [
+          {
+            "node": "Publish to Facebook (Mock)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Instagram": {
+      "main": [
+        [
+          {
+            "node": "Publish to Instagram (Mock)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Twitter": {
+      "main": [
+        [
+          {
+            "node": "Publish to Twitter (Mock)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish to LinkedIn (Mock)": {
+      "main": [
+        [
+          {
+            "node": "Merge Platform Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish to Facebook (Mock)": {
+      "main": [
+        [
+          {
+            "node": "Merge Platform Results",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Publish to Instagram (Mock)": {
+      "main": [
+        [
+          {
+            "node": "Merge Platform Results",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Publish to Twitter (Mock)": {
+      "main": [
+        [
+          {
+            "node": "Merge Platform Results",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Merge Platform Results": {
+      "main": [
+        [
+          {
+            "node": "Update Content Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Content Status": {
+      "main": [
+        [
+          {
+            "node": "Collect All Updates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect All Updates": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Stats": {
+      "main": [
+        [
+          {
+            "node": "Build Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Summary": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-12-03T10:00:00.000Z",
+      "updatedAt": "2025-12-03T10:00:00.000Z",
+      "id": "unsic-publisher",
+      "name": "UNSIC Publisher"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2025-12-03T10:00:00.000Z",
+  "versionId": "1"
+}

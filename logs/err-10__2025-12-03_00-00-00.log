@@ -1,0 +1,92 @@
+2025-12-02T23:32:42: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    category: "fisco",
+    pillar: "istituzionale",
+    rank: 1,
+    title: "Test Finale UNSIC Platform",
+    summary: "Test integrazione completa",
+    why_relevant: "Test sistema",
+    source: "TEST",
+    link: "https://test.com",
+    published_at: new Date("Invalid Date"),
+                  ~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "pending"
+  }
+}
+
+Invalid value for argument `published_at`: Provided Date object is invalid. Expected Date.
+    at ignore-listed frames {
+  clientVersion: '5.22.0'
+}
+2025-12-02T23:32:52: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    category: "fisco",
+    pillar: "istituzionale",
+    rank: 1,
+    title: "Test",
+    summary: "Test",
+    why_relevant: "Test",
+    source: "TEST",
+    link: "https://test.com",
+    published_at: new Date("Invalid Date"),
+                  ~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "pending"
+  }
+}
+
+Invalid value for argument `published_at`: Provided Date object is invalid. Expected Date.
+    at ignore-listed frames {
+  clientVersion: '5.22.0'
+}
+2025-12-02T23:33:47: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    category: "fisco",
+    pillar: "istituzionale",
+    rank: 1,
+    title: "Test UNSIC",
+    summary: "Test",
+    why_relevant: "Test",
+    source: "TEST",
+    link: "https://test.com",
+    published_at: new Date("Invalid Date"),
+                  ~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "pending"
+  }
+}
+
+Invalid value for argument `published_at`: Provided Date object is invalid. Expected Date.
+    at ignore-listed frames {
+  clientVersion: '5.22.0'
+}
+2025-12-02T23:34:45: Error creating news: Error [PrismaClientValidationError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+{
+  data: {
+    category: "fisco",
+    pillar: "istituzionale",
+    rank: 1,
+    title: "Test UNSIC Platform",
+    summary: "Test completo",
+    why_relevant: "Test sistema dedicato",
+    source: "TEST",
+    link: "https://ansa.it",
+    published_at: new Date("Invalid Date"),
+                  ~~~~~~~~~~~~~~~~~~~~~~~~
+    status: "pending"
+  }
+}
+
+Invalid value for argument `published_at`: Provided Date object is invalid. Expected Date.
+    at ignore-listed frames {
+  clientVersion: '5.22.0'
+}

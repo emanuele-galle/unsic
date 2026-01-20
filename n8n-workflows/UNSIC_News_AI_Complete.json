@@ -1,0 +1,177 @@
+{
+  "name": "UNSIC News AI Agent Complete",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{"field": "cronExpression", "expression": "0 7 * * *"}]
+        }
+      },
+      "name": "Daily 7 AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://www.ansa.it/sito/notizie/economia/economia_rss.xml"
+      },
+      "name": "RSS ANSA",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://www.ilsole24ore.com/rss/economia.xml"
+      },
+      "name": "RSS Sole24Ore",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://www.governo.it/rss"
+      },
+      "name": "RSS Governo",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [460, 500]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll"
+      },
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "AI Agent News Analyzer",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "model": "gemini-3-flash-preview",
+        "options": {
+          "temperature": 0.3,
+          "maxOutputTokens": 1024
+        }
+      },
+      "name": "Gemini LLM",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [900, 620],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "A1nGwfr8Myr9lwVe",
+          "name": "UNSIC Gemini API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analizza notizie RSS per UNSIC.\n\nHai accesso a questi Tools:\n- query_database: Query PostgreSQL per verificare notizie già salvate\n- generate_image: Genera immagini con Nano-Banana o Canva\n\nNotizia: {{ $json.title }}\nDescrizione: {{ $json.contentSnippet }}\n\nAnalizza e restituisci JSON: {score: 0-100, category: string, summary: string, relevant: boolean}"
+      },
+      "name": "System Prompt",
+      "type": "@n8n/n8n-nodes-langchain.promptTemplate",
+      "typeVersion": 1,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "jsonSchema": "{\"type\":\"object\",\"properties\":{\"score\":{\"type\":\"number\"},\"category\":{\"type\":\"string\"},\"summary\":{\"type\":\"string\"},\"relevant\":{\"type\":\"boolean\"}},\"required\":[\"score\",\"relevant\"]}"
+      },
+      "name": "Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "name": "query_database",
+        "description": "Query PostgreSQL database per verificare se una notizia esiste già o ottenere statistiche",
+        "workflowId": "={{ $workflow.id }}"
+      },
+      "name": "Tool: Query DB",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [700, 620]
+    },
+    {
+      "parameters": {
+        "name": "generate_image",
+        "description": "Genera un'immagine per la notizia usando Nano-Banana AI o Canva templates"
+      },
+      "name": "Tool: Generate Image",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.1,
+      "position": [900, 800]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {"value1": "={{ $json.relevant }}", "value2": true}
+          ]
+        }
+      },
+      "name": "Filter Relevant",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1340, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unsic.fodivps1.cloud/api/news",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "title", "value": "={{ $json.title }}"},
+            {"name": "summary", "value": "={{ $json.summary }}"},
+            {"name": "category", "value": "={{ $json.category }}"},
+            {"name": "link", "value": "={{ $json.link }}"},
+            {"name": "article_id", "value": "={{ $json.link }}"},
+            {"name": "source", "value": "AI Agent RSS"},
+            {"name": "rank", "value": 1},
+            {"name": "pillar", "value": "tutela_imprenditorialita"}
+          ]
+        }
+      },
+      "name": "Save to DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1560, 300]
+    }
+  ],
+  "connections": {
+    "Daily 7 AM": {"main": [[
+      {"node": "RSS ANSA", "type": "main", "index": 0},
+      {"node": "RSS Sole24Ore", "type": "main", "index": 0},
+      {"node": "RSS Governo", "type": "main", "index": 0}
+    ]]},
+    "RSS ANSA": {"main": [[{"node": "Merge", "type": "main", "index": 0}]]},
+    "RSS Sole24Ore": {"main": [[{"node": "Merge", "type": "main", "index": 1}]]},
+    "RSS Governo": {"main": [[{"node": "Merge", "type": "main", "index": 2}]]},
+    "Merge": {"main": [[{"node": "AI Agent News Analyzer", "type": "main", "index": 0}]]},
+    "AI Agent News Analyzer": {"main": [[{"node": "Filter Relevant", "type": "main", "index": 0}]]},
+    "Filter Relevant": {"main": [[{"node": "Save to DB", "type": "main", "index": 0}], []]},
+    "Gemini LLM": {"ai_languageModel": [[{"node": "AI Agent News Analyzer", "type": "ai_languageModel", "index": 0}]]},
+    "System Prompt": {"ai_prompt": [[{"node": "AI Agent News Analyzer", "type": "ai_prompt", "index": 0}]]},
+    "Output Parser": {"ai_outputParser": [[{"node": "AI Agent News Analyzer", "type": "ai_outputParser", "index": 0}]]},
+    "Tool: Query DB": {"ai_tool": [[{"node": "AI Agent News Analyzer", "type": "ai_tool", "index": 0}]]},
+    "Tool: Generate Image": {"ai_tool": [[{"node": "AI Agent News Analyzer", "type": "ai_tool", "index": 1}]]}
+  },
+  "settings": {},
+  "staticData": null
+}
