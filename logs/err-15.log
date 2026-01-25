@@ -1,4 +1,10 @@
-2026-01-20T06:42:39: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T04:06:40: Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+    at ignore-listed frames
+2026-01-25T04:06:59: Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+    at ignore-listed frames
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -9,7 +15,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:39: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -20,7 +26,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:39: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -31,7 +37,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:39: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -42,7 +48,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:39: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -53,7 +59,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -64,7 +70,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -75,7 +81,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -86,7 +92,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -97,7 +103,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -108,7 +114,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -119,7 +125,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -130,7 +136,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -141,7 +147,7 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
@@ -152,7 +158,90 @@ Unique constraint failed on the fields: (`link`)
   meta: [Object],
   clientVersion: '7.2.0'
 }
-2026-01-20T06:42:40: Error creating news: Error [PrismaClientKnownRequestError]: 
+2026-01-25T06:04:16: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5579) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.2.0'
+}
+2026-01-25T08:14:01: Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+    at ignore-listed frames
+2026-01-25T08:14:19: Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+    at ignore-listed frames
+2026-01-25T15:03:56: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5579) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.2.0'
+}
+2026-01-25T15:03:56: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5579) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.2.0'
+}
+2026-01-25T15:03:56: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5579) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.2.0'
+}
+2026-01-25T15:03:56: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5579) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.2.0'
+}
+2026-01-25T15:03:56: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5579) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.2.0'
+}
+2026-01-25T15:03:56: Error creating news: Error [PrismaClientKnownRequestError]: 
+Invalid `prisma.unsicNews.create()` invocation:
+
+
+Unique constraint failed on the fields: (`link`)
+    at async o (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:1625)
+    at async u (.next/server/chunks/[root-of-the-server]__c8b0656a._.js:1:5579) {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '7.2.0'
+}
+2026-01-25T15:03:56: Error creating news: Error [PrismaClientKnownRequestError]: 
 Invalid `prisma.unsicNews.create()` invocation:
 
 
