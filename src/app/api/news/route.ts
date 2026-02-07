@@ -52,20 +52,24 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const newsItem = await prisma.unsicNews.create({
-      data: {
-        article_id: body.article_id,
-        category: body.category,
-        pillar: body.pillar,
-        rank: body.rank,
-        title: body.title,
-        summary: body.summary,
-        why_relevant: body.why_relevant,
-        source: body.source,
-        link: body.link,
-        status: 'pending',
-        published_at: publishedAt,
-      },
+    const data = {
+      article_id: body.article_id,
+      category: body.category,
+      pillar: body.pillar,
+      rank: body.rank,
+      title: body.title,
+      summary: body.summary,
+      why_relevant: body.why_relevant,
+      source: body.source,
+      link: body.link,
+      status: 'pending' as const,
+      published_at: publishedAt,
+    };
+
+    const newsItem = await prisma.unsicNews.upsert({
+      where: { link: body.link },
+      update: {},
+      create: data,
     });
 
     return NextResponse.json({
@@ -73,20 +77,6 @@ export async function POST(request: NextRequest) {
       news: newsItem,
     });
   } catch (error: any) {
-    // Gestione duplicate key error (Prisma P2002)
-    if (error.code === 'P2002' && error.meta?.target?.includes('link')) {
-      console.log(`[DEDUP] Duplicate link skipped: ${body.link}`);
-      return NextResponse.json(
-        {
-          error: 'Duplicate news link',
-          code: 'DUPLICATE_LINK',
-          link: body.link,
-          skipped: true
-        },
-        { status: 409 }
-      );
-    }
-
     console.error('Error creating news:', error);
     return NextResponse.json(
       { error: 'Failed to create news', details: error.message },
