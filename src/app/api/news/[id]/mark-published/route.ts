@@ -33,12 +33,12 @@ export async function POST(
       message: 'Content marked as published',
       updated_count: updatedContent.count,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error marking content as published:', error);
     return NextResponse.json(
       {
         error: 'Failed to mark content as published',
-        details: error.message,
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 }
     );

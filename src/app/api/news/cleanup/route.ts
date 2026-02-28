@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 // POST /api/news/cleanup - Delete news older than 72h that are still pending
-export async function POST(request: NextRequest) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function POST(_request: NextRequest) {
   try {
     const now = new Date();
     const cutoffDate = new Date(now.getTime() - 72 * 60 * 60 * 1000); // 72 hours ago
@@ -27,17 +28,18 @@ export async function POST(request: NextRequest) {
       cutoff_date: cutoffDate.toISOString(),
       message: `Deleted ${result.count} pending news older than 72 hours`,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error cleaning up news:', error);
     return NextResponse.json(
-      { error: 'Failed to cleanup news', details: error.message },
+      { error: 'Failed to cleanup news', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
 }
 
 // GET /api/news/cleanup - Get count of news that would be deleted (preview)
-export async function GET(request: NextRequest) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function GET(_request: NextRequest) {
   try {
     const now = new Date();
     const cutoffDate = new Date(now.getTime() - 72 * 60 * 60 * 1000); // 72 hours ago
@@ -57,10 +59,10 @@ export async function GET(request: NextRequest) {
       cutoff_date: cutoffDate.toISOString(),
       message: `${count} pending news older than 72 hours will be deleted`,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error checking cleanup:', error);
     return NextResponse.json(
-      { error: 'Failed to check cleanup', details: error.message },
+      { error: 'Failed to check cleanup', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

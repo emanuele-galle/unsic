@@ -54,10 +54,10 @@ export async function POST(request: NextRequest) {
       updated: updateResult.count,
       message: `${updateResult.count} contenuti marcati come pubblicati`,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in manual-publish:', error);
     return NextResponse.json(
-      { error: 'Failed to mark as published', details: error.message },
+      { error: 'Failed to mark as published', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

@@ -1,0 +1,28 @@
+2026-02-02T05:00:09: [CLEANUP] Deleted 0 expired pending news older than 72h
+2026-02-02T11:00:09: [CLEANUP] Deleted 10 expired pending news older than 72h
+2026-02-02T17:00:10: [CLEANUP] Deleted 25 expired pending news older than 72h
+2026-02-02T21:40:15: ▲ Next.js 16.1.2
+2026-02-02T21:40:15: - Local:         http://localhost:3025
+2026-02-02T21:40:15: - Network:       http://193.203.190.63:3025
+2026-02-02T21:40:15: 
+2026-02-02T21:40:15: ✓ Starting...
+2026-02-02T21:40:19: ✓ Ready in 5s
+2026-02-02T21:42:20: ▲ Next.js 16.1.2
+2026-02-02T21:42:20: - Local:         http://localhost:3025
+2026-02-02T21:42:20: - Network:       http://193.203.190.63:3025
+2026-02-02T21:42:20: 
+2026-02-02T21:42:20: ✓ Starting...
+2026-02-02T21:42:37: ✓ Ready in 20.3s
+2026-02-02T21:45:13: ▲ Next.js 16.1.2
+2026-02-02T21:45:13: - Local:         http://localhost:3025
+2026-02-02T21:45:13: - Network:       http://193.203.190.63:3025
+2026-02-02T21:45:13: 
+2026-02-02T21:45:13: ✓ Starting...
+2026-02-02T21:45:26: ✓ Ready in 15.3s
+2026-02-02T21:51:01: ▲ Next.js 16.1.2
+2026-02-02T21:51:01: - Local:         http://localhost:3025
+2026-02-02T21:51:01: - Network:       http://193.203.190.63:3025
+2026-02-02T21:51:01: 
+2026-02-02T21:51:01: ✓ Starting...
+2026-02-02T21:51:02: ✓ Ready in 1827ms
+2026-02-02T23:00:53: [CLEANUP] Deleted 0 expired pending news older than 72h

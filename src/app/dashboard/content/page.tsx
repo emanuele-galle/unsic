@@ -1,18 +1,15 @@
 'use client';
 
+/* eslint-disable react-perf/jsx-no-new-function-as-prop */
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   Home,
-  Wand2,
-  Upload,
   RefreshCw,
   Eye,
-  ExternalLink,
   CheckCircle,
-  Clock,
   Sparkles,
   ArrowLeft,
   UserCheck,
@@ -58,14 +55,7 @@ interface GroupedContent {
   } | null;
 }
 
-// UNSIC Brand Colors
-const UNSIC_COLORS = {
-  primary: '#002e6d',
-  accent: '#ffb71b',
-  dark: '#00193d',
-  lightGray: '#efefef',
-  white: '#fafdfd',
-};
+
 
 // Post Preview Component
 const PostPreview = ({ post }: { post: ContentPost }) => {
@@ -125,6 +115,7 @@ const PostPreview = ({ post }: { post: ContentPost }) => {
 
         {post.content_image_url && (
           <div className="mt-3 rounded-lg overflow-hidden border-2 border-gray-200 shadow-sm">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={post.content_image_url} alt="Post preview" className="w-full h-auto" />
           </div>
         )}
@@ -171,7 +162,7 @@ export default function ContentPublishPage() {
       await fetch('/api/auth/logout', { method: 'POST' });
       toast.success('Logout effettuato');
       router.push('/login');
-    } catch (error) {
+    } catch {
       toast.error('Errore durante il logout');
     }
   };
@@ -242,10 +233,10 @@ export default function ContentPublishPage() {
 
       // Refresh list to show new images
       fetchContent(true);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error generating images:', error);
       toast.error('Errore nella generazione immagini', {
-        description: error.message || 'Riprova più tardi',
+        description: (error instanceof Error ? error.message : undefined) || 'Riprova più tardi',
       });
     } finally {
       setGeneratingImageIds((prev) => {
@@ -284,10 +275,10 @@ export default function ContentPublishPage() {
 
       // Refresh list
       fetchContent(true);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error publishing automatically:', error);
       toast.error('Errore nella pubblicazione automatica', {
-        description: error.message || 'Riprova più tardi',
+        description: (error instanceof Error ? error.message : undefined) || 'Riprova più tardi',
       });
     } finally {
       setPublishingIds((prev) => {
@@ -321,10 +312,10 @@ export default function ContentPublishPage() {
 
       // Refresh list
       fetchContent(true);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error marking as published:', error);
       toast.error('Errore nell\'aggiornamento', {
-        description: error.message || 'Riprova più tardi',
+        description: (error instanceof Error ? error.message : undefined) || 'Riprova più tardi',
       });
     } finally {
       setProcessingIds((prev) => {

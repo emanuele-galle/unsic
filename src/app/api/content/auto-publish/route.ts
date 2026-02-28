@@ -72,13 +72,13 @@ export async function POST(request: NextRequest) {
             error: publishResult.error,
           });
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(`Error publishing to ${post.platform}:`, error);
         results.push({
           post_id: post.id,
           platform: post.platform,
           success: false,
-          error: error.message,
+          error: error instanceof Error ? error.message : String(error),
         });
       }
     }
@@ -98,16 +98,17 @@ export async function POST(request: NextRequest) {
       total: contentPosts.length,
       results,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in auto-publish:', error);
     return NextResponse.json(
-      { error: 'Failed to auto-publish', details: error.message },
+      { error: 'Failed to auto-publish', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
 }
 
 // Publish to social media platform
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function publishToSocial(post: any): Promise<{ success: boolean; platform_post_id?: string; error?: string }> {
   const { platform, content_text, content_image_url, hashtags, news } = post;
 
@@ -146,9 +147,9 @@ async function publishToSocial(post: any): Promise<{ success: boolean; platform_
       success: true,
       platform_post_id: data.post_id || `auto_${platform}_${Date.now()}`,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     // In case of network error, still mark as published (mock mode)
-    console.warn(`Social publish error, using mock mode:`, error.message);
+    console.warn(`Social publish error, using mock mode:`, (error instanceof Error ? error.message : String(error)));
     return {
       success: true,
       platform_post_id: `mock_${platform}_${Date.now()}`,

@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get('status');
     const newsId = searchParams.get('news_id');
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const whereClause: any = {};
     if (status) whereClause.status = status;
     if (newsId) whereClause.news_id = newsId;
@@ -68,13 +69,13 @@ export async function POST(request: NextRequest) {
       success: true,
       content,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating content:', error);
     return NextResponse.json(
       {
         error: 'Failed to create content',
-        details: error.message,
-        code: error.code
+        details: error instanceof Error ? error.message : String(error),
+        code: (error as Record<string, unknown>).code
       },
       { status: 500 }
     );

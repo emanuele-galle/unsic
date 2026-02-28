@@ -12,6 +12,7 @@ const PLATFORM_ASPECT: Record<string, string> = {
 const NANOBANANA_URL = process.env.NANOBANANA_URL || 'http://172.19.0.1:8100';
 
 // POST /api/content/generate-images - Generate images for all content of a news item
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -110,13 +111,13 @@ export async function POST(request: NextRequest) {
             error: 'No image URL in response',
           });
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(`Error generating image for ${post.platform}:`, error);
         results.push({
           post_id: post.id,
           platform: post.platform,
           success: false,
-          error: error.message,
+          error: error instanceof Error ? error.message : String(error),
         });
       }
     }
@@ -128,19 +129,19 @@ export async function POST(request: NextRequest) {
       total: contentPosts.length,
       results,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in generate-images:', error);
     return NextResponse.json(
-      { error: 'Failed to generate images', details: error.message },
+      { error: 'Failed to generate images', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
 }
 
 // Build an appropriate image prompt based on news category and content
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function buildImagePrompt(news: any, post: any): string {
   const category = news.category?.toLowerCase() || 'general';
-  const pillar = news.pillar || '';
   const title = news.title || '';
 
   // Base style for UNSIC branding

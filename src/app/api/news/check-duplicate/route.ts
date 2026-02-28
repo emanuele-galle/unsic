@@ -31,10 +31,10 @@ export async function GET(request: NextRequest) {
       duplicate: !!existing,
       news: existing || null,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error checking duplicate:', error);
     return NextResponse.json(
-      { error: 'Failed to check duplicate', details: error.message },
+      { error: 'Failed to check duplicate', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

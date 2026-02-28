@@ -42,7 +42,7 @@ export async function PATCH(
     const { id } = await params;
     const body = await request.json();
 
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
 
     if (body.status) updateData.status = body.status;
     if (body.platform_post_id) updateData.platform_post_id = body.platform_post_id;

@@ -38,6 +38,7 @@ export async function GET(request: NextRequest) {
 
 // POST /api/news - Create news (called by N8N)
 export async function POST(request: NextRequest) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let body: any;
 
   try {
@@ -76,10 +77,10 @@ export async function POST(request: NextRequest) {
       success: true,
       news: newsItem,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating news:', error);
     return NextResponse.json(
-      { error: 'Failed to create news', details: error.message },
+      { error: 'Failed to create news', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

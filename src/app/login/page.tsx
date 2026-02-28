@@ -1,5 +1,6 @@
 'use client';
 
+/* eslint-disable react-perf/jsx-no-new-function-as-prop */
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';

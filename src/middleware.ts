@@ -43,11 +43,9 @@ export async function middleware(request: NextRequest) {
         if (!FASE1_ROLES.includes(role)) {
           return NextResponse.redirect(new URL('/dashboard/content', request.url));
         }
-      } else if (pathname.startsWith('/dashboard/content')) {
+      } else if (pathname.startsWith('/dashboard/content') && !FASE2_ROLES.includes(role)) {
         // Fase 2: Solo sviluppatore
-        if (!FASE2_ROLES.includes(role)) {
-          return NextResponse.redirect(new URL('/dashboard/news', request.url));
-        }
+        return NextResponse.redirect(new URL('/dashboard/news', request.url));
       }
 
       // Add user info to headers for server components
