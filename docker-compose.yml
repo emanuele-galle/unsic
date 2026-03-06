@@ -22,6 +22,8 @@ services:
       - "traefik.http.routers.unsic.tls.certresolver=letsencrypt"
       - "traefik.http.routers.unsic.middlewares=security-headers@file,compress@file"
       - "traefik.http.services.unsic.loadbalancer.server.port=3000"
+    volumes:
+      - nextcache:/app/.next/cache
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3000"]
       interval: 30s
@@ -51,6 +53,7 @@ services:
       start_period: 30s
 
 volumes:
+  nextcache:
   postgres-data:
 
 networks:
