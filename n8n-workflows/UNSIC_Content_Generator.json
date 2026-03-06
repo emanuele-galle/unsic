@@ -15,7 +15,7 @@
     },
     {
       "parameters": {
-        "url": "=https://unsic.fodivps1.cloud/api/news/{{ $json.body.news_id }}",
+        "url": "=https://unsic.muscarivps.cloud/api/news/{{ $json.body.news_id }}",
         "options": {}
       },
       "name": "Load News from DB",
@@ -129,7 +129,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://unsic.fodivps1.cloud/api/content",
+        "url": "https://unsic.muscarivps.cloud/api/content",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [

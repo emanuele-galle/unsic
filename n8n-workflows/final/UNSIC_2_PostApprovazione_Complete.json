@@ -16,7 +16,7 @@
     },
     {
       "parameters": {
-        "url": "=https://unsic.fodivps1.cloud/api/news/{{ $json.body.news_id }}"
+        "url": "=https://unsic.muscarivps.cloud/api/news/{{ $json.body.news_id }}"
       },
       "name": "Load News",
       "type": "n8n-nodes-base.httpRequest",
@@ -156,7 +156,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://unsic.fodivps1.cloud/api/content",
+        "url": "https://unsic.muscarivps.cloud/api/content",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  news_id: $('Set Platform').item.json.id,\n  platform: $('Set Platform').item.json.current_platform,\n  content_text: $json.text,\n  hashtags: $json.hashtags,\n  content_image_url: $json.image_url || '',\n  category: $('Set Platform').item.json.category,\n  status: 'ready'\n}) }}"
@@ -310,7 +310,7 @@
     {
       "parameters": {
         "method": "PATCH",
-        "url": "=https://unsic.fodivps1.cloud/api/content/{{ $('Save Content').item.json.id }}",
+        "url": "=https://unsic.muscarivps.cloud/api/content/{{ $('Save Content').item.json.id }}",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  status: 'published',\n  platform_post_id: $json.platform_post_id,\n  published_at: $json.published_at\n}) }}"

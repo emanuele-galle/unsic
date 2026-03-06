@@ -220,7 +220,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://unsic.fodivps1.cloud/api/news",
+        "url": "https://unsic.muscarivps.cloud/api/news",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  category: $json.category,\n  pillar: $json.pillar,\n  rank: $json.rank,\n  title: $json.title,\n  summary: $json.summary,\n  why_relevant: $json.why_relevant,\n  source: $('Clean Data').item.json.source_feed,\n  link: $('Clean Data').item.json.link,\n  article_id: $('Clean Data').item.json.link,\n  status: 'pending_approval',\n  published_at: $('Clean Data').item.json.pubDate\n}) }}"
@@ -253,7 +253,7 @@
           }, {
             "id": "2",
             "name": "dashboard_url",
-            "value": "https://unsic.fodivps1.cloud/dashboard/news",
+            "value": "https://unsic.muscarivps.cloud/dashboard/news",
             "type": "string"
           }]
         }

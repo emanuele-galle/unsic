@@ -9,11 +9,11 @@
 
 ```bash
 # Verifica che tutte le API siano attive
-curl -s https://unsic.fodivps1.cloud/api/news | jq '.count'
-curl -s https://unsic.fodivps1.cloud/api/content | jq '.count'
+curl -s https://unsic.muscarivps.cloud/api/news | jq '.count'
+curl -s https://unsic.muscarivps.cloud/api/content | jq '.count'
 
 # Test POST news (mock)
-curl -X POST https://unsic.fodivps1.cloud/api/news \
+curl -X POST https://unsic.muscarivps.cloud/api/news \
   -H "Content-Type: application/json" \
   -d '{
     "category": "fisco",
@@ -80,7 +80,7 @@ docker compose logs -f
 
 ### Step 1: Access N8N
 
-1. Apri browser: https://n8n.fodivps1.cloud
+1. Apri browser: https://n8n.muscarivps.cloud
 2. Login con credenziali VPS Panel
 3. Click su **Workflows** nel menu laterale
 
@@ -100,7 +100,7 @@ Per ogni workflow:
 - **Schedule Trigger**: Verifica cron (default: ogni ora)
 - **RSS Feed Read** (x3): Verifica URL RSS funzionanti
 - **HTTP Request (Gemini)**: Verifica che `GOOGLE_GEMINI_API_KEY` sia caricata
-- **HTTP Request (Save DB)**: Verifica URL `https://unsic.fodivps1.cloud/api/news`
+- **HTTP Request (Save DB)**: Verifica URL `https://unsic.muscarivps.cloud/api/news`
 
 5. Click **Activate** (toggle switch in alto a destra)
 
@@ -113,11 +113,11 @@ Per ogni workflow:
 
 **Verifica nodi critici:**
 
-- **Webhook Trigger**: Nota l'URL generato (es. `https://n8n.fodivps1.cloud/webhook/unsic-content-factory`)
-- **HTTP Request (Load News)**: Verifica URL `https://unsic.fodivps1.cloud/api/news/:id`
+- **Webhook Trigger**: Nota l'URL generato (es. `https://n8n.muscarivps.cloud/webhook/unsic-content-factory`)
+- **HTTP Request (Load News)**: Verifica URL `https://unsic.muscarivps.cloud/api/news/:id`
 - **HTTP Request (Gemini)**: Verifica API key
 - **HTTP Request (Nano-Banana)**: Verifica URL `http://172.19.0.1:8100/api/generate`
-- **HTTP Request (Save Content)**: Verifica URL `https://unsic.fodivps1.cloud/api/content`
+- **HTTP Request (Save Content)**: Verifica URL `https://unsic.muscarivps.cloud/api/content`
 
 5. Click **Activate**
 
@@ -131,9 +131,9 @@ Per ogni workflow:
 **Verifica nodi critici:**
 
 - **Schedule Trigger**: Verifica cron (default: ogni ora)
-- **Webhook Trigger**: Nota l'URL generato (es. `https://n8n.fodivps1.cloud/webhook/unsic-publish`)
-- **HTTP Request (Get Content)**: Verifica URL `https://unsic.fodivps1.cloud/api/content?status=ready`
-- **HTTP Request (Update Status)**: Verifica URL `https://unsic.fodivps1.cloud/api/content/:id`
+- **Webhook Trigger**: Nota l'URL generato (es. `https://n8n.muscarivps.cloud/webhook/unsic-publish`)
+- **HTTP Request (Get Content)**: Verifica URL `https://unsic.muscarivps.cloud/api/content?status=ready`
+- **HTTP Request (Update Status)**: Verifica URL `https://unsic.muscarivps.cloud/api/content/:id`
 - **Telegram Node** (optional): Configura credenziali Telegram Bot se vuoi notifiche
 
 5. Click **Activate**
@@ -174,7 +174,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 
 2. Trigger webhook:
    ```bash
-   curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+   curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
      -H "Content-Type: application/json" \
      -d "{\"news_id\": \"$NEWS_ID\"}"
    ```
@@ -204,7 +204,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 
 2. Trigger webhook:
    ```bash
-   curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-publish
+   curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-publish
    ```
 
 3. Verifica response (JSON con total_published, platforms)
@@ -231,8 +231,8 @@ Aggiungi webhook URL nel file `.env` di UNSIC:
 ```bash
 # /var/www/projects/unsic/.env
 
-N8N_CONTENT_FACTORY_WEBHOOK=https://n8n.fodivps1.cloud/webhook/unsic-content-factory
-N8N_PUBLISHER_WEBHOOK=https://n8n.fodivps1.cloud/webhook/unsic-publish
+N8N_CONTENT_FACTORY_WEBHOOK=https://n8n.muscarivps.cloud/webhook/unsic-content-factory
+N8N_PUBLISHER_WEBHOOK=https://n8n.muscarivps.cloud/webhook/unsic-publish
 ```
 
 Restart UNSIC app:
@@ -492,7 +492,7 @@ Schedule (Daily 23:00)
 
 ```bash
 # 1. Verifica workflow attivi
-curl -s https://n8n.fodivps1.cloud/api/v1/workflows \
+curl -s https://n8n.muscarivps.cloud/api/v1/workflows \
   -H "X-N8N-API-KEY: your_api_key" \
   | jq '.data[] | select(.name | contains("UNSIC")) | {name, active}'
 
@@ -534,7 +534,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 ---
 
 **Maintainer:** Claude Code (backend-senior-dev agent)
-**VPS:** fodivps1.cloud
+**VPS:** muscarivps.cloud
 **N8N Version:** 1.120.4
 **Created:** 2025-12-03
 **Status:** ✅ Production Ready

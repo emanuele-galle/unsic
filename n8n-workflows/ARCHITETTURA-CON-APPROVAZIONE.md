@@ -29,7 +29,7 @@
 │                  FASE 2: APPROVAZIONE UMANA                          │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
-│  Dashboard UNSIC: https://unsic.fodivps1.cloud/dashboard/news      │
+│  Dashboard UNSIC: https://unsic.muscarivps.cloud/dashboard/news      │
 │                                                                      │
 │  Umano vede:                                                        │
 │  ┌────────────────────────────────────────────────────┐            │
@@ -193,7 +193,7 @@ export default async function PendingApprovalPage() {
             });
 
             // 2. Trigger Content Generator
-            await fetch('https://n8n.fodivps1.cloud/webhook/news-approved', {
+            await fetch('https://n8n.muscarivps.cloud/webhook/news-approved', {
               method: 'POST',
               body: JSON.stringify({ news_id: news.id })
             });

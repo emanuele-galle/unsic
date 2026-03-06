@@ -144,7 +144,7 @@ export default function UnsicNewsPage() {
   const triggerWorkflow = async () => {
     setTriggeringWorkflow(true);
     try {
-      const response = await fetch('https://n8n.fodivps1.cloud/webhook/unsic-manual-trigger', {
+      const response = await fetch('https://n8n.muscarivps.cloud/webhook/unsic-manual-trigger', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ triggered_by: currentUser?.displayName }),
@@ -225,7 +225,7 @@ export default function UnsicNewsPage() {
       }
 
       // Step 2: Trigger N8N Content Generator
-      const n8nResponse = await fetch('https://n8n.fodivps1.cloud/webhook/news-approved', {
+      const n8nResponse = await fetch('https://n8n.muscarivps.cloud/webhook/news-approved', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ news_id: id }),

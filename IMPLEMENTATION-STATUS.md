@@ -110,7 +110,7 @@ n8n-workflows/SETUP-GUIDE.md (CREATED - Guida completa import/config)
 ## 🎯 Prossimi Passi (Settimana 1, Giorno 5 - Setup Manuale)
 
 ### Setup N8N (Azioni Manuali Richieste)
-- [ ] Accedere a N8N: https://n8n.fodivps1.cloud
+- [ ] Accedere a N8N: https://n8n.muscarivps.cloud
 - [ ] **Step 1:** Configurare credenziali Gemini API in N8N
 - [ ] Configurare credenziali Gemini in N8N (API key da `/home/shared/secrets/api-keys.env`)
 - [ ] Implementare nodi:

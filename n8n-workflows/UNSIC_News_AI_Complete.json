@@ -133,7 +133,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://unsic.fodivps1.cloud/api/news",
+        "url": "https://unsic.muscarivps.cloud/api/news",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [

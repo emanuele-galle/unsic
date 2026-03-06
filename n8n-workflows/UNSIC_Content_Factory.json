@@ -37,7 +37,7 @@
     {
       "parameters": {
         "method": "GET",
-        "url": "={{ 'https://unsic.fodivps1.cloud/api/news/' + $json.news_id }}",
+        "url": "={{ 'https://unsic.muscarivps.cloud/api/news/' + $json.news_id }}",
         "authentication": "none",
         "options": {}
       },
@@ -267,7 +267,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://unsic.fodivps1.cloud/api/content",
+        "url": "https://unsic.muscarivps.cloud/api/content",
         "authentication": "none",
         "sendBody": true,
         "specifyBody": "json",

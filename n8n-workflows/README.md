@@ -197,8 +197,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 GOOGLE_GEMINI_API_KEY=your_gemini_api_key_here
 
 # N8N Webhooks
-N8N_CONTENT_FACTORY_WEBHOOK=https://n8n.fodivps1.cloud/webhook/unsic-content-factory
-N8N_PUBLISHER_WEBHOOK=https://n8n.fodivps1.cloud/webhook/unsic-publish
+N8N_CONTENT_FACTORY_WEBHOOK=https://n8n.muscarivps.cloud/webhook/unsic-content-factory
+N8N_PUBLISHER_WEBHOOK=https://n8n.muscarivps.cloud/webhook/unsic-publish
 
 # Telegram (optional notifications)
 TELEGRAM_UNSIC_CHAT_ID=123456789
@@ -219,7 +219,7 @@ environment:
 
 ### Manual Import (N8N UI)
 
-1. Apri N8N: https://n8n.fodivps1.cloud
+1. Apri N8N: https://n8n.muscarivps.cloud
 2. Click **Workflows** → **Import from File**
 3. Upload i 3 file JSON
 4. Per ogni workflow:
@@ -257,7 +257,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 NEWS_ID=$(docker exec -i unsic-postgres psql -U unsic_user -d unsic_db -t -c "SELECT id FROM unsic_news LIMIT 1;")
 
 # Trigger webhook
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
   -H "Content-Type: application/json" \
   -d "{\"news_id\": \"$NEWS_ID\"}"
 
@@ -270,7 +270,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 
 ```bash
 # Trigger manuale
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-publish
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-publish
 
 # Verifica pubblicazioni
 docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
@@ -415,6 +415,6 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 ---
 
 **Maintainer:** Claude Code (backend-senior-dev agent)
-**VPS:** fodivps1.cloud
+**VPS:** muscarivps.cloud
 **N8N Version:** 1.120.4
 **Last Updated:** 2025-12-03

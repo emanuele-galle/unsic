@@ -40,7 +40,7 @@ export async function POST(
     };
 
     // Trigger N8N publishing workflow
-    const n8nUrl = process.env.N8N_WEBHOOK_PUBLISHER || 'https://n8n.fodivps1.cloud/webhook/unsic-publish';
+    const n8nUrl = process.env.N8N_WEBHOOK_PUBLISHER || 'https://n8n.muscarivps.cloud/webhook/unsic-publish';
 
     const n8nResponse = await fetch(n8nUrl, {
       method: 'POST',

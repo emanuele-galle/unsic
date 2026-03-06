@@ -267,7 +267,7 @@ TO: "Build Content Record"
 ```
 Configurazione:
 • Method: POST
-• URL: https://unsic.fodivps1.cloud/api/content
+• URL: https://unsic.muscarivps.cloud/api/content
 • Send Body: YES
 • Body Content Type: JSON
 

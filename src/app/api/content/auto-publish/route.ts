@@ -117,7 +117,7 @@ async function publishToSocial(post: any): Promise<{ success: boolean; platform_
 
   // For now, we'll call the N8N webhook to handle actual social posting
   // This allows flexibility to connect different social media services
-  const webhookUrl = process.env.SOCIAL_PUBLISH_WEBHOOK || 'https://n8n.fodivps1.cloud/webhook/social-publish';
+  const webhookUrl = process.env.SOCIAL_PUBLISH_WEBHOOK || 'https://n8n.muscarivps.cloud/webhook/social-publish';
 
   try {
     const response = await fetch(webhookUrl, {

@@ -16,7 +16,7 @@ export async function POST(
     });
 
     // Send to N8N webhook
-    const n8nUrl = process.env.N8N_WEBHOOK_URL || 'https://n8n.fodivps1.cloud/webhook/unsic-approve';
+    const n8nUrl = process.env.N8N_WEBHOOK_URL || 'https://n8n.muscarivps.cloud/webhook/unsic-approve';
 
     const n8nResponse = await fetch(n8nUrl, {
       method: 'POST',

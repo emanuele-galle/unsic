@@ -19,14 +19,14 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db -c "SELECT NOW();"
 
 ```bash
 # Test GET /api/news
-curl -s https://unsic.fodivps1.cloud/api/news | jq '.success'
+curl -s https://unsic.muscarivps.cloud/api/news | jq '.success'
 
 # Test GET /api/content
-curl -s https://unsic.fodivps1.cloud/api/content | jq '.success'
+curl -s https://unsic.muscarivps.cloud/api/content | jq '.success'
 
 # Test GET /api/news/:id (use existing ID)
 NEWS_ID=$(docker exec -i unsic-postgres psql -U unsic_user -d unsic_db -t -c "SELECT id FROM unsic_news LIMIT 1;" | xargs)
-curl -s "https://unsic.fodivps1.cloud/api/news/$NEWS_ID" | jq '.id'
+curl -s "https://unsic.muscarivps.cloud/api/news/$NEWS_ID" | jq '.id'
 ```
 
 - [ ] `/api/news` returns success
@@ -62,7 +62,7 @@ curl -s "https://www.ansa.it/sito/notizie/economia/economia_rss.xml" | grep "<it
 #### Test 1.1: Manual Execution
 
 **Steps:**
-1. Apri N8N: https://n8n.fodivps1.cloud
+1. Apri N8N: https://n8n.muscarivps.cloud
 2. Apri workflow "UNSIC News Intelligence v3"
 3. Click **Execute Workflow**
 4. Attendi 30-60 secondi
@@ -118,7 +118,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 NEWS_ID=$(docker exec -i unsic-postgres psql -U unsic_user -d unsic_db -t -c "SELECT id FROM unsic_news WHERE status='pending' LIMIT 1;" | xargs)
 
 # Trigger webhook
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
   -H "Content-Type: application/json" \
   -d "{\"news_id\": \"$NEWS_ID\"}" \
   | jq .
@@ -197,7 +197,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 
 **Trigger:**
 ```bash
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-publish | jq .
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-publish | jq .
 ```
 
 **Expected Response:**
@@ -280,7 +280,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 
 1. **Create mock news:**
    ```bash
-   curl -X POST https://unsic.fodivps1.cloud/api/news \
+   curl -X POST https://unsic.muscarivps.cloud/api/news \
      -H "Content-Type: application/json" \
      -d '{
        "category": "fisco",
@@ -297,7 +297,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 2. **Trigger Content Factory:**
    ```bash
    NEWS_ID="<id_from_step_1>"
-   curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+   curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
      -H "Content-Type: application/json" \
      -d "{\"news_id\": \"$NEWS_ID\"}"
    ```
@@ -310,7 +310,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 
 4. **Trigger Publisher:**
    ```bash
-   curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-publish
+   curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-publish
    ```
 
 5. **Verify end state:**
@@ -338,7 +338,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 ```bash
 # Create 20 test news
 for i in {1..20}; do
-  curl -X POST https://unsic.fodivps1.cloud/api/news \
+  curl -X POST https://unsic.muscarivps.cloud/api/news \
     -H "Content-Type: application/json" \
     -d "{\"category\":\"fisco\",\"pillar\":\"normativo\",\"rank\":$i,\"title\":\"Bulk Test $i\",\"summary\":\"Test\",\"why_relevant\":\"Test\",\"source\":\"Test\",\"link\":\"https://example.com/$i\"}" &
 done
@@ -351,7 +351,7 @@ wait
 docker exec -i unsic-postgres psql -U unsic_user -d unsic_db -t \
   -c "SELECT id FROM unsic_news WHERE title LIKE 'Bulk Test%';" \
   | while read NEWS_ID; do
-    curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+    curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
       -H "Content-Type: application/json" \
       -d "{\"news_id\": \"$NEWS_ID\"}" &
   done
@@ -377,7 +377,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 ### Test 6: Invalid News ID
 
 ```bash
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
   -H "Content-Type: application/json" \
   -d '{"news_id": "invalid_id_xxx"}' \
   | jq .
@@ -424,7 +424,7 @@ docker compose stop
 **Trigger:**
 ```bash
 NEWS_ID=$(docker exec -i unsic-postgres psql -U unsic_user -d unsic_db -t -c "SELECT id FROM unsic_news LIMIT 1;" | xargs)
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
   -H "Content-Type: application/json" \
   -d "{\"news_id\": \"$NEWS_ID\"}"
 ```
@@ -499,5 +499,5 @@ docker compose up -d
 ---
 
 **Maintainer:** Claude Code (backend-senior-dev agent)
-**VPS:** fodivps1.cloud
+**VPS:** muscarivps.cloud
 **Last Updated:** 2025-12-03

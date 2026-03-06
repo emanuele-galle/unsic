@@ -33,7 +33,7 @@ export async function POST(
     });
 
     // Trigger N8N copywriting workflow (same as publish but only copywriting step)
-    const n8nUrl = process.env.N8N_WEBHOOK_PUBLISHER || 'https://n8n.fodivps1.cloud/webhook/unsic-publish';
+    const n8nUrl = process.env.N8N_WEBHOOK_PUBLISHER || 'https://n8n.muscarivps.cloud/webhook/unsic-publish';
 
     const n8nPayload = {
       news_id: id,

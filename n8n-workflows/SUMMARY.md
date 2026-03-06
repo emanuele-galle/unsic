@@ -147,10 +147,10 @@ Telegram Notification
 
 | Service | URL | Purpose | Status |
 |---------|-----|---------|--------|
-| **UNSIC API** | https://unsic.fodivps1.cloud/api | News/Content storage | ✅ Active |
+| **UNSIC API** | https://unsic.muscarivps.cloud/api | News/Content storage | ✅ Active |
 | **Google Gemini** | https://generativelanguage.googleapis.com | AI analysis | ✅ Configured |
 | **Nano-Banana** | http://172.19.0.1:8100 | Image generation | ✅ Active |
-| **N8N** | https://n8n.fodivps1.cloud | Workflow orchestration | ✅ Active |
+| **N8N** | https://n8n.muscarivps.cloud | Workflow orchestration | ✅ Active |
 
 ### Environment Variables Required
 
@@ -160,8 +160,8 @@ GOOGLE_GEMINI_API_KEY=your_key_here
 TELEGRAM_UNSIC_CHAT_ID=123456789  # Optional
 
 # /var/www/projects/unsic/.env (Next.js app)
-N8N_CONTENT_FACTORY_WEBHOOK=https://n8n.fodivps1.cloud/webhook/unsic-content-factory
-N8N_PUBLISHER_WEBHOOK=https://n8n.fodivps1.cloud/webhook/unsic-publish
+N8N_CONTENT_FACTORY_WEBHOOK=https://n8n.muscarivps.cloud/webhook/unsic-content-factory
+N8N_PUBLISHER_WEBHOOK=https://n8n.muscarivps.cloud/webhook/unsic-publish
 ```
 
 ---
@@ -206,7 +206,7 @@ N8N_PUBLISHER_WEBHOOK=https://n8n.fodivps1.cloud/webhook/unsic-publish
 ls -lh /var/www/projects/unsic/n8n-workflows/v3/*.json
 
 # Import via N8N UI:
-# 1. Open https://n8n.fodivps1.cloud
+# 1. Open https://n8n.muscarivps.cloud
 # 2. Workflows → Import from File
 # 3. Upload each JSON file
 # 4. Activate workflows
@@ -231,12 +231,12 @@ docker compose restart n8n
 
 # Test Content Factory
 NEWS_ID=$(docker exec -i unsic-postgres psql -U unsic_user -d unsic_db -t -c "SELECT id FROM unsic_news LIMIT 1;" | xargs)
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-content-factory \
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-content-factory \
   -H "Content-Type: application/json" \
   -d "{\"news_id\": \"$NEWS_ID\"}"
 
 # Test Publisher
-curl -X POST https://n8n.fodivps1.cloud/webhook/unsic-publish
+curl -X POST https://n8n.muscarivps.cloud/webhook/unsic-publish
 ```
 
 ### 4. Verify Results
@@ -350,7 +350,7 @@ docker exec -i unsic-postgres psql -U unsic_user -d unsic_db \
 ## Sign-off
 
 **Developed by:** Claude Code (backend-senior-dev agent)
-**VPS:** fodivps1.cloud
+**VPS:** muscarivps.cloud
 **Date:** 2025-12-03
 **Version:** 3.0
 **Status:** ✅ Ready for Import

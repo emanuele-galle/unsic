@@ -83,12 +83,12 @@ jobs:
       - name: Health check
         run: |
           sleep 15
-          curl -sf https://unsic.fodivps1.cloud/api/health || echo "Health check endpoint not available"
+          curl -sf https://unsic.muscarivps.cloud/api/health || echo "Health check endpoint not available"
 
       - name: Notify deployment
         if: always()
         run: |
-          curl -sf -X POST "https://n8n.fodivps1.cloud/webhook/deploy-notify" \
+          curl -sf -X POST "https://n8n.muscarivps.cloud/webhook/deploy-notify" \
             -H "Content-Type: application/json" \
             -d '{
               "project": "unsic",

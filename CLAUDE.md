@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **URL** | https://unsic.fodivps1.cloud |
+| **URL** | https://unsic.muscarivps.cloud |
 | **PM2** | unsic-dashboard (port 3025) |
 | **Database** | PostgreSQL:5439 |
 | **Created** | 2025-12-02 |
@@ -107,7 +107,7 @@ model UnsicNews {
   ```
 
 ### Outgoing Webhook (UNSIC → N8N)
-- **URL:** `https://n8n.fodivps1.cloud/webhook/unsic-approve`
+- **URL:** `https://n8n.muscarivps.cloud/webhook/unsic-approve`
 - **Trigger:** When news approved via dashboard
 - **Payload:** Full news object with status="approved"
 
@@ -175,8 +175,8 @@ pm2 restart unsic-dashboard
 DATABASE_URL="postgresql://unsic_user:***@localhost:5439/unsic_db"
 NODE_ENV=production
 PORT=3025
-NEXT_PUBLIC_API_URL=https://unsic.fodivps1.cloud
-N8N_WEBHOOK_URL=https://n8n.fodivps1.cloud/webhook/unsic-approve
+NEXT_PUBLIC_API_URL=https://unsic.muscarivps.cloud
+N8N_WEBHOOK_URL=https://n8n.muscarivps.cloud/webhook/unsic-approve
 ```
 
 ## Database Credentials
@@ -233,7 +233,7 @@ SELECT COUNT(*) FROM unsic_news GROUP BY status;
 http:
   routers:
     unsic:
-      rule: "Host(`unsic.fodivps1.cloud`)"
+      rule: "Host(`unsic.muscarivps.cloud`)"
       service: unsic
       entryPoints:
         - websecure
@@ -297,9 +297,9 @@ npm start
 
 ## Links
 
-- **Dashboard:** https://unsic.fodivps1.cloud/dashboard/news
-- **API Docs:** https://unsic.fodivps1.cloud/api/news
-- **N8N Workflow:** https://n8n.fodivps1.cloud
+- **Dashboard:** https://unsic.muscarivps.cloud/dashboard/news
+- **API Docs:** https://unsic.muscarivps.cloud/api/news
+- **N8N Workflow:** https://n8n.muscarivps.cloud
 
 ---
 

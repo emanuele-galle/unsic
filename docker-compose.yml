@@ -17,7 +17,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-public"
-      - "traefik.http.routers.unsic.rule=Host(`unsic.fodivps1.cloud`)"
+      - "traefik.http.routers.unsic.rule=Host(`unsic.muscarivps.cloud`)"
       - "traefik.http.routers.unsic.entrypoints=websecure"
       - "traefik.http.routers.unsic.tls.certresolver=letsencrypt"
       - "traefik.http.routers.unsic.middlewares=security-headers@file,compress@file"

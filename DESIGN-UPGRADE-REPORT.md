@@ -1,7 +1,7 @@
 # UNSIC Design Upgrade Report
 **Data:** 2025-12-03
 **Progetto:** UNSIC News Platform
-**URL:** https://unsic.fodivps1.cloud
+**URL:** https://unsic.muscarivps.cloud
 
 ## Obiettivo
 Migliorare completamente la grafica del progetto UNSIC con design system **Immersive Bento**, glassmorphism, animazioni Framer Motion e branding istituzionale moderno.
@@ -276,7 +276,7 @@ pm2 restart unsic-dashboard
    - Desktop (1024px+)
 
 2. **Accessibility Audit:**
-   - Run `npx @axe-core/cli https://unsic.fodivps1.cloud`
+   - Run `npx @axe-core/cli https://unsic.muscarivps.cloud`
    - Fix eventuali violations
 
 3. **Performance Audit:**
@@ -306,7 +306,7 @@ Il progetto UNSIC è stato **completamente trasformato** con:
 
 **Build:** ✓ Success
 **Deploy:** ✓ Online (PM2)
-**URL:** https://unsic.fodivps1.cloud
+**URL:** https://unsic.muscarivps.cloud
 
 ---
 

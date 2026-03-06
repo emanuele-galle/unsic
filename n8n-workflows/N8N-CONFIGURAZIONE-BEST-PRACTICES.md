@@ -326,7 +326,7 @@ Conditions:
 ✅ CORRETTO:
 
 Method: POST
-URL: https://unsic.fodivps1.cloud/api/news
+URL: https://unsic.muscarivps.cloud/api/news
 
 Send Body: YES
 Body Content Type: JSON
@@ -678,7 +678,7 @@ Prima di attivare un workflow production:
 - **Architettura**: `/var/www/projects/unsic/n8n-workflows/ARCHITETTURA-CON-APPROVAZIONE.md`
 - **Guide Tools**: `/var/www/projects/unsic/n8n-workflows/GUIDA-AI-AGENT-TOOLS.md`
 - **Credentials Server**: `/home/shared/secrets/api-keys.env`
-- **N8N Dashboard**: https://n8n.fodivps1.cloud
+- **N8N Dashboard**: https://n8n.muscarivps.cloud
 - **Google AI Studio**: https://aistudio.google.com/apikey
 
 ---

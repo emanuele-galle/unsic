@@ -40,7 +40,7 @@ I **sub-nodi** sono "strumenti" che l'AI Agent può decidere autonomamente di us
 ### 1. Apri il Workflow in N8N
 
 ```
-https://n8n.fodivps1.cloud → "UNSIC News with AI Agent"
+https://n8n.muscarivps.cloud → "UNSIC News with AI Agent"
 ```
 
 ### 2. Visualizzazione Canvas

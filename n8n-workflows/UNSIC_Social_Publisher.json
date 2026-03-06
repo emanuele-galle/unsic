@@ -46,7 +46,7 @@
     {
       "parameters": {
         "method": "GET",
-        "url": "https://unsic.fodivps1.cloud/api/content?status=ready",
+        "url": "https://unsic.muscarivps.cloud/api/content?status=ready",
         "authentication": "none",
         "options": {}
       },
@@ -357,7 +357,7 @@
     {
       "parameters": {
         "method": "PATCH",
-        "url": "={{ 'https://unsic.fodivps1.cloud/api/content/' + $('Extract Content Data').item.json.content_id }}",
+        "url": "={{ 'https://unsic.muscarivps.cloud/api/content/' + $('Extract Content Data').item.json.content_id }}",
         "authentication": "none",
         "sendBody": true,
         "specifyBody": "json",
